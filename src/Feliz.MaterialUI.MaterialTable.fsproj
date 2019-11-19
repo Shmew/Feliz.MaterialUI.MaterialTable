@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Types.fs" />
+    <Compile Include="Bindings.fs" />
+    <Compile Include="Props\Actions.fs" />
+    <Compile Include="Props\Columns.fs" />
+    <Compile Include="Props\Components.fs" />
+    <Compile Include="Props\DetailPanel.fs" />
+    <Compile Include="Props\Editable.fs" />
+    <Compile Include="Props\Localization.fs" />
+    <Compile Include="Props\Icons.fs" />
+    <Compile Include="Props\Options.fs" />
+    <Compile Include="Props\MaterialTable.fs" />
+    <Compile Include="Mui.fs" />
+    <None Include="paket.references" />
+    <None Include="paket.template" />
+  </ItemGroup>
+  <PropertyGroup>
+    <NpmDependencies>
+      <NpmPackage Name="@material-ui/pickers" Version="gte 3.2.7 lt 4" ResolutionStrategy="max" />
+      <NpmPackage Name="@date-io/core" Version="gte 1.3.11 lt 2" ResolutionStrategy="max" />
+      <NpmPackage Name="@date-io/date-fns" Version="gte 1.3.11 lt 2" ResolutionStrategy="max" />
+      <NpmPackage Name="material-design-icons" Version="gte 3.0.1 lt 4" ResolutionStrategy="max" />
+      <NpmPackage Name="prop-types" Version="gte 15.7.2 lt 16" ResolutionStrategy="max" />
+      <NpmPackage Name="date-fns" Version="gte 2.7.0 lt 3" ResolutionStrategy="max" />
+    </NpmDependencies>
+  </PropertyGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>

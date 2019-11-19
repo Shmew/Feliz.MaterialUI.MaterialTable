@@ -1,0 +1,16 @@
+group Docs
+    Elmish.SweetAlert
+    Fable.Core
+    Fable.Elmish.React
+    Fable.MaterialUI.Icons
+    Fable.MaterialUI.MaterialDesignIcons
+    Fable.Promise
+    Fable.SimpleHttp
+    Fable.SimpleJson
+    Feliz
+    Feliz.ElmishComponents
+    Feliz.MaterialUI
+    Feliz.Router
+    FSharp.Core
+
+    File: Markdown.fs Feliz.Markdown

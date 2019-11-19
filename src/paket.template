@@ -1,0 +1,13 @@
+﻿type project
+licenseExpression https://raw.githubusercontent.com/Shmew/Feliz.MaterialUI.Pickers/master/LICENSE
+authors Cody Johnson
+description
+    Fable bindings written in the Feliz-style for material-ui-pickers
+language
+    F#
+tags
+    fsharp, fable, react, feliz, MUI, material-ui, MaterialUI
+files
+    *.fsproj ==> fable
+    *.fs ==> fable
+    Props/*.fs ==> fable/Props

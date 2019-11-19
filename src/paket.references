@@ -1,0 +1,5 @@
+﻿group MaterialTable
+    Fable.Core
+    Feliz
+    Feliz.MaterialUI
+    FSharp.Core
