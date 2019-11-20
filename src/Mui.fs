@@ -8,4 +8,4 @@ open Feliz.MaterialUI
 
 [<Erase>]
 type Mui =
-    static member inline materialTable (props: IMaterialTableProperty list) = reactElement (importDefault "material-table") (createObj !!props)
+    static member inline materialTable (props: IReactProperty list) = reactElement (importDefault "material-table") (createObj !!props)

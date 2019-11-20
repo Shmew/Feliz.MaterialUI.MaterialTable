@@ -7,6 +7,7 @@ Taken from [material-table - Selection](https://material-table.com/#/docs/featur
 module Samples.Selection
 
 open Feliz
+open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -16,7 +17,10 @@ type private RowData =
       birthCity: int }
 
 let render = React.functionComponent (fun () ->
+    let theme = Styles.useTheme()
+
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Selection Preview"
         materialTable.columns [
             columns.column [
@@ -53,6 +57,9 @@ let render = React.functionComponent (fun () ->
         ]
         materialTable.options [
             options.selection true
+            options.headerStyle [
+                style.backgroundColor theme.palette.background.``default``
+            ]
         ]
     ])
 ```

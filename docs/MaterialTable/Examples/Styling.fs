@@ -2,6 +2,7 @@
 module Samples.Styling
 
 open Feliz
+open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -11,7 +12,10 @@ type private RowData =
       birthCity: int }
 
 let render = React.functionComponent (fun () ->
+    let theme = Styles.useTheme()
+
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Styling Preview"
         materialTable.columns [
             columns.column [

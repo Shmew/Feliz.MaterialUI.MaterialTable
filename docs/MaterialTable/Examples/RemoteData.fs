@@ -28,8 +28,10 @@ let private buildUrl pageSize page =
 
 let render = React.functionComponent (fun () ->
     //let tableRef = Fable.React.HookBindings.Hooks.useRef<Bindings.MaterialTableProps<RowData>> (jsOptions<Bindings.MaterialTableProps<RowData>>(fun _ -> ()))
+    let theme = Styles.useTheme()
 
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Remote Data Preview"
         materialTable.columns [
             columns.column [
@@ -86,4 +88,9 @@ let render = React.functionComponent (fun () ->
                 //action.onClick <| fun _ -> tableRef.current.onQueryChange()
         //    ]
         //]
+        materialTable.options [
+            options.headerStyle [
+                style.backgroundColor theme.palette.background.``default``
+            ]
+        ]
     ])

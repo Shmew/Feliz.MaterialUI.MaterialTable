@@ -3,6 +3,7 @@ module Samples.TreeData
 
 open Fable.Core
 open Feliz
+open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 [<StringEnum(CaseRules.None)>]
@@ -26,7 +27,10 @@ type private RowData =
       parentId: int option }
 
 let render = React.functionComponent (fun () ->
+    let theme = Styles.useTheme()
+
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Tree Data Preview"
         materialTable.columns [
             columns.column [
@@ -115,5 +119,8 @@ let render = React.functionComponent (fun () ->
         )
         materialTable.options [
             options.selection true
+            options.headerStyle [
+                style.backgroundColor theme.palette.background.``default``
+            ]
         ]
     ])

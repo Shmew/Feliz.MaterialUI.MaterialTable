@@ -2,6 +2,7 @@
 module Samples.Filtering
 
 open Feliz
+open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -16,7 +17,10 @@ let private (|Int|_|) (str: string) =
     | _ -> None
 
 let render = React.functionComponent (fun () ->
+    let theme = Styles.useTheme()
+
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Filtering Preview"
         materialTable.columns [
             columns.column [
@@ -56,5 +60,8 @@ let render = React.functionComponent (fun () ->
         ]
         materialTable.options [
             options.filtering true
+            options.headerStyle [
+                style.backgroundColor theme.palette.background.``default``
+            ]
         ]
     ])

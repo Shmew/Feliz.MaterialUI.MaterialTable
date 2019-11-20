@@ -7,6 +7,7 @@ Taken from [material-table - Filtering](https://material-table.com/#/docs/featur
 module Samples.Filtering
 
 open Feliz
+open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -21,13 +22,16 @@ let private (|Int|_|) (str: string) =
     | _ -> None
 
 let render = React.functionComponent (fun () ->
+    let theme = Styles.useTheme()
+
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Filtering Preview"
         materialTable.columns [
             columns.column [
                 column.title "Name"
                 column.field "name"
-                column.filterPlaceholder "Filter on size field size from numeric input"
+                column.filterPlaceholder "Filter on field size (int)"
                 column.customFilterAndSearch<RowData> (fun term rowData _ -> match term with | Int i -> i = rowData.name.Length | _ -> false)
             ]
             columns.column [
@@ -61,6 +65,9 @@ let render = React.functionComponent (fun () ->
         ]
         materialTable.options [
             options.filtering true
+            options.headerStyle [
+                style.backgroundColor theme.palette.background.``default``
+            ]
         ]
     ])
 ```

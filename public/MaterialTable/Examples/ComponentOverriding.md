@@ -41,8 +41,11 @@ let private update msg model =
             .Type(AlertType.Success)
         |> SweetAlert.Run
 
-let private view model dispatch =
+let private view = React.functionComponent (fun (input: {| model: Model; dispatch: Msg -> unit |}) ->
+    let theme = Styles.useTheme()
+
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Action Overriding Preview"
         materialTable.columns [
             columns.column [
@@ -76,12 +79,12 @@ let private view model dispatch =
                 action.icon (Mui.icon [ addIcon [] ])
                 action.tooltip "Add User"
                 action.isFreeAction true
-                action.onClick (fun _ _ -> dispatch AddRow)
+                action.onClick (fun _ _ -> input.dispatch AddRow)
             ]
             actions.action [
                 action.icon (Mui.icon [ saveIcon [] ])
                 action.tooltip "Save User"
-                action.onClick<RowData> (fun _ rowData -> dispatch (SaveRow rowData.name))
+                action.onClick<RowData> (fun _ rowData -> input.dispatch (SaveRow rowData.name))
             ]
         ]
         materialTable.components [
@@ -101,7 +104,12 @@ let private view model dispatch =
                 ]
             )
         ]
-    ]
+        materialTable.options [
+            options.headerStyle [
+                style.backgroundColor theme.palette.background.``default``
+            ]
+        ]
+    ])
 
-let render () = React.elmishComponent("freeAction", init(), update, view)
+let render () = React.elmishComponent("freeAction", init(), update, (fun model dispatch -> view {| model = model; dispatch = dispatch |} ))
 ```

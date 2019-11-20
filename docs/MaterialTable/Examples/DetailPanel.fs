@@ -12,7 +12,10 @@ type private RowData =
       birthCity: int }
 
 let render = React.functionComponent (fun () ->
+    let theme = Styles.useTheme()
+
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]        
         materialTable.title "Detail Panel With RowClick Preview"
         materialTable.columns [
             columns.column [
@@ -58,4 +61,9 @@ let render = React.functionComponent (fun () ->
             ]
         )
         materialTable.onRowClick (fun _ _ togglePanel -> togglePanel())
+        materialTable.options [
+            options.headerStyle [
+                style.backgroundColor theme.palette.background.``default``
+            ]
+        ]
     ])

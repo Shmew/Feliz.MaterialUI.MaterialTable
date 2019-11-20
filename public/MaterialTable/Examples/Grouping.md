@@ -7,6 +7,7 @@ Taken from [material-table - Grouping](https://material-table.com/#/docs/feature
 module Samples.Grouping
 
 open Feliz
+open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -16,7 +17,10 @@ type private RowData =
       birthCity: int }
 
 let render = React.functionComponent (fun () ->
+    let theme = Styles.useTheme()
+
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Grouping Preview"
         materialTable.columns [
             columns.column [
@@ -54,6 +58,9 @@ let render = React.functionComponent (fun () ->
         ]
         materialTable.options [
             options.grouping true
+            options.headerStyle [
+                style.backgroundColor theme.palette.background.``default``
+            ]
         ]
     ])
 ```

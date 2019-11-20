@@ -92,7 +92,9 @@ module AppTheme =
                    [ style.display.flex
                      style.height.inheritFromParent
                      style.userSelect.none ]
-           sampleApp = Styles.create [ style.paddingTop (length.em 2); style.paddingBottom (length.em 2) ]
+           sampleApp = Styles.create 
+                   [ style.paddingTop (length.em 2)
+                     style.paddingBottom (length.em 2) ]
            title = Styles.create [ style.width (length.percent 100) ]
            titleButton =
                Styles.create
@@ -234,7 +236,7 @@ module MarkdownView =
                 grid.container true
 
                 prop.children [
-                    Html.div [
+                    Mui.grid [
                         prop.className c.sampleApp
                         prop.children sampleApp
                     ]
@@ -439,7 +441,6 @@ let sidebar (model: Model) =
             nestedMenuItem "Row Selection" [ Urls.Selection ]
             nestedMenuItem "Styling" [ Urls.Styling ]
             nestedMenuItem "Tree Data" [ Urls.TreeData ]
-            
         ]
     ]
 

@@ -1,5 +1,6 @@
 ﻿namespace Feliz.MaterialUI.MaterialTable
 
+open Feliz
 open System.ComponentModel
 
 type IActionProperty = interface end
@@ -20,7 +21,6 @@ type ILocalizationHeaderProperty = interface end
 type ILocalizationPaginationProperty = interface end
 type ILocalizationToolbarProperty = interface end
 type IIconsProperty = interface end
-type IMaterialTableProperty = interface end
 type IOptionsProperty = interface end
 
 [<EditorBrowsable(EditorBrowsableState.Never)>]
@@ -40,5 +40,4 @@ module Interop =
     let mkLocalizationPaginationAttr (key: string) (value: obj) : ILocalizationPaginationProperty = unbox (key, value)
     let mkLocalizationToolbarAttr (key: string) (value: obj) : ILocalizationToolbarProperty = unbox (key, value)
     let mkIconsAttr (key: string) (value: obj) : IIconsProperty = unbox (key, value)
-    let mkMaterialTableAttr (key: string) (value: obj) : IMaterialTableProperty = unbox (key, value)
     let mkOptionsAttr (key: string) (value: obj) : IOptionsProperty = unbox (key, value)
