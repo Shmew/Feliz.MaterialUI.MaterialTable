@@ -38,7 +38,7 @@ let render = React.functionComponent (fun () ->
             ]
         ]
         materialTable.data [
-            { name = "Mehmet"; 
+            { name = "Mehmet"
               surname = "Baran"
               birthYear = 1987
               birthCity = 63 }

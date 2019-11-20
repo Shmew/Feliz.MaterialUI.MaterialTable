@@ -15,6 +15,14 @@
     <Compile Include="MaterialTable\Examples\CustomColumnRendering.fs" />
     <Compile Include="MaterialTable\Examples\DetailPanel.fs" />
     <Compile Include="MaterialTable\Examples\Editable.fs" />
+    <Compile Include="MaterialTable\Examples\Export.fs" />
+    <Compile Include="MaterialTable\Examples\Filtering.fs" />
+    <Compile Include="MaterialTable\Examples\Grouping.fs" />
+    <Compile Include="MaterialTable\Examples\Localization.fs" />
+    <Compile Include="MaterialTable\Examples\RemoteData.fs" />
+    <Compile Include="MaterialTable\Examples\Selection.fs" />
+    <Compile Include="MaterialTable\Examples\Styling.fs" />
+    <Compile Include="MaterialTable\Examples\TreeData.fs" />
     <None Include="main.scss" />
     <Compile Include="..\paket-files\docs\Zaid-Ajaj\Feliz\Feliz.Markdown\Markdown.fs">
       <Paket>True</Paket>

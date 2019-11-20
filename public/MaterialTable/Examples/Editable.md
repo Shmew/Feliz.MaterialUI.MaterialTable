@@ -1,54 +1,91 @@
-# Feliz.MaterialUI.Pickers - Date Picker
+﻿# Feliz.MaterialUI.MaterialTable - Editable
 
-Taken from [material-ui-pickers - Date Picker](https://material-ui-pickers.dev/demo/datepicker)
+Taken from [material-table - Editable](https://material-table.com/#/docs/features/editable)
 
 ```fsharp:materialtable-editable
 [<RequireQualifiedAccess>]
-module Samples.Date.Basic
+module Samples.Editable
 
 open Feliz
-open Feliz.MaterialUI
-open Feliz.MaterialUI.Pickers
-open System
+open Feliz.MaterialUI.MaterialTable
 
-let render = React.functionComponent(fun () ->
-    let state,setState = React.useState(DateTime.Now)
+type private RowData =
+    { name: string
+      surname: string
+      birthYear: int
+      birthCity: int
+      someDateTime: System.DateTime }
 
-    Mui.pickerUtilsProvider [
-        Mui.grid [
-            grid.container true
-            grid.direction.row
-            grid.justify.spaceEvenly
+let render = React.functionComponent (fun () ->
+    let state, setState = 
+        [ { name = "Mehmet"
+            surname = "Baran"
+            birthYear = 1987
+            birthCity = 63
+            someDateTime = System.DateTime.Now }
+          { name = "Zerya Betül"
+            surname = "Baran"
+            birthYear = 2017
+            birthCity = 34 
+            someDateTime = System.DateTime.Today } ]
+        |> React.useState
 
-            prop.children [
-                Mui.datePicker [
-                    datePicker.label "Basic Example"
-                    datePicker.value state
-                    datePicker.onChange setState
-                    datePicker.animateYearScrolling true
-                ]
-                Mui.datePicker [
-                    datePicker.autoOk true
-                    datePicker.label "Clearable"
-                    datePicker.clearable true
-                    datePicker.disableFuture true
-                    datePicker.value state
-                    datePicker.onChange setState
-                ]
-                Mui.datePicker [
-                    datePicker.openTo.year
-                    datePicker.format "dd/MM/yyyy"
-                    datePicker.label "Date of Birth"
-                    datePicker.disableFuture true
-                    datePicker.views [
-                        datePicker.views.year
-                        datePicker.views.month
-                        datePicker.views.date
-                    ]
-                    datePicker.value state
-                    datePicker.onChange setState
+    Mui.materialTable [
+        materialTable.title "Editable Preview"
+        materialTable.columns [
+            columns.column [
+                column.title "Name"
+                column.field "name"
+            ]
+            columns.column [
+                column.title "Surname"
+                column.field "surname"
+                column.initialEditValue "Initial edit value"
+            ]
+            columns.column [
+                column.title "Birth Year"
+                column.field "birthYear"
+                column.type'.numeric
+            ]
+            columns.column [
+                column.title "Birth Place"
+                column.field "birthCity"
+                column.lookup<int,string> [ 
+                    (34, "İstanbul")
+                    (63, "Şanlıurfa") 
                 ]
             ]
+            columns.column [
+                column.title "Some DateTime"
+                column.field "someDateTime"
+                column.type'.datetime
+            ]
+        ]
+        materialTable.data state
+        materialTable.editable [
+            editable.onRowAdd<RowData> (fun newData ->
+                Promise.create (fun res reject ->
+                    state @ [ newData ]
+                    |> setState
+                    res()
+                )
+            )
+            editable.onRowUpdate<RowData> (fun newData oldData ->
+                Promise.create (fun res reject ->
+                    state 
+                    |> List.map (fun d -> if d = oldData then newData else d)
+                    |> setState
+                    res()
+                )
+            )
+            editable.onRowDelete<RowData> (fun oldData ->
+                Promise.create (fun res reject ->
+                    state
+                    |> List.filter (fun d -> d <> oldData)
+                    |> setState
+                    res()
+                )
+            )
         ]
     ])
 ```

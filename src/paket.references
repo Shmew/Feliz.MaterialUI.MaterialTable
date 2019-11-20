@@ -1,5 +1,6 @@
 ﻿group MaterialTable
     Fable.Core
+    Fable.Promise
     Feliz
     Feliz.MaterialUI
     FSharp.Core

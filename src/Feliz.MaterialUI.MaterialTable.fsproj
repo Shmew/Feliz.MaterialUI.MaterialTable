@@ -22,12 +22,7 @@
   </ItemGroup>
   <PropertyGroup>
     <NpmDependencies>
-      <NpmPackage Name="@material-ui/pickers" Version="gte 3.2.7 lt 4" ResolutionStrategy="max" />
-      <NpmPackage Name="@date-io/core" Version="gte 1.3.11 lt 2" ResolutionStrategy="max" />
-      <NpmPackage Name="@date-io/date-fns" Version="gte 1.3.11 lt 2" ResolutionStrategy="max" />
-      <NpmPackage Name="material-design-icons" Version="gte 3.0.1 lt 4" ResolutionStrategy="max" />
-      <NpmPackage Name="prop-types" Version="gte 15.7.2 lt 16" ResolutionStrategy="max" />
-      <NpmPackage Name="date-fns" Version="gte 2.7.0 lt 3" ResolutionStrategy="max" />
+      <NpmPackage Name="material-table" Version="gte 1.54.1 lt 2" ResolutionStrategy="max" />
     </NpmDependencies>
   </PropertyGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />

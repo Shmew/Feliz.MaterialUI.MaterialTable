@@ -48,7 +48,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "public", "public", "{CABBED
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MaterialTable", "MaterialTable", "{C3F9583A-523B-4835-B6BC-CD8FFD2178E3}"
 	ProjectSection(SolutionItems) = preProject
-		public\Pickers\Installation.md = public\Pickers\Installation.md
+		public\MaterialTable\Installation.md = public\MaterialTable\Installation.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{7F29BFE8-02B3-4763-838C-3D8228334B4B}"
@@ -67,6 +67,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{AB
 		public\MaterialTable\Examples\CustomColumnRendering.md = public\MaterialTable\Examples\CustomColumnRendering.md
 		public\MaterialTable\Examples\DetailPanel.md = public\MaterialTable\Examples\DetailPanel.md
 		public\MaterialTable\Examples\Editable.md = public\MaterialTable\Examples\Editable.md
+		public\MaterialTable\Examples\Export.md = public\MaterialTable\Examples\Export.md
+		public\MaterialTable\Examples\Filtering.md = public\MaterialTable\Examples\Filtering.md
+		public\MaterialTable\Examples\Grouping.md = public\MaterialTable\Examples\Grouping.md
+		public\MaterialTable\Examples\Localization.md = public\MaterialTable\Examples\Localization.md
+		public\MaterialTable\Examples\RemoteData.md = public\MaterialTable\Examples\RemoteData.md
+		public\MaterialTable\Examples\Selection.md = public\MaterialTable\Examples\Selection.md
+		public\MaterialTable\Examples\Styling.md = public\MaterialTable\Examples\Styling.md
+		public\MaterialTable\Examples\TreeData.md = public\MaterialTable\Examples\TreeData.md
 	EndProjectSection
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Feliz.MaterialUI.MaterialTable", "src\Feliz.MaterialUI.MaterialTable.fsproj", "{ADA27DF0-AF13-442A-A80F-725BCEEBAE0D}"

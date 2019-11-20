@@ -1,13 +1,7 @@
-﻿# Feliz.MaterialUI.MaterialTable - Detail Panel
-
-Taken from [material-table - Detail Panel](https://material-table.com/#/docs/features/detail-panel)
-
-```fsharp:materialtable-detailpanel
-[<RequireQualifiedAccess>]
-module Samples.DetailPanel
+﻿[<RequireQualifiedAccess>]
+module Samples.Filtering
 
 open Feliz
-open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -16,13 +10,20 @@ type private RowData =
       birthYear: int
       birthCity: int }
 
+let private (|Int|_|) (str: string) =
+    match System.Int32.TryParse(str) with
+    | true,res -> Some res
+    | _ -> None
+
 let render = React.functionComponent (fun () ->
     Mui.materialTable [
-        materialTable.title "Detail Panel With RowClick Preview"
+        materialTable.title "Filtering Preview"
         materialTable.columns [
             columns.column [
                 column.title "Name"
                 column.field "name"
+                column.filterPlaceholder "Filter on field size (int)"
+                column.customFilterAndSearch<RowData> (fun term rowData _ -> match term with | Int i -> i = rowData.name.Length | _ -> false)
             ]
             columns.column [
                 column.title "Surname"
@@ -32,6 +33,7 @@ let render = React.functionComponent (fun () ->
                 column.title "Birth Year"
                 column.field "birthYear"
                 column.type'.numeric
+                column.filtering false
             ]
             columns.column [
                 column.title "Birth Place"
@@ -52,16 +54,7 @@ let render = React.functionComponent (fun () ->
               birthYear = 2017
               birthCity = 34 }
         ]
-        materialTable.detailPanels<RowData> (fun rowData ->
-            Mui.cardMedia [
-                cardMedia.component' "iframe"
-                cardMedia.src "https://www.youtube.com/embed/C0DPdy98e4c"
-                Interop.mkAttr "width" "100%" // See https://github.com/Zaid-Ajaj/Feliz/pull/123
-                Interop.mkAttr "allow" "accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture" // See https://github.com/Zaid-Ajaj/Feliz/issues/124
-                prop.height 315
-                prop.style [ style.borderWidth 0 ]
-            ]
-        )
-        materialTable.onRowClick (fun _ _ togglePanel -> togglePanel())
+        materialTable.options [
+            options.filtering true
+        ]
     ])
-```

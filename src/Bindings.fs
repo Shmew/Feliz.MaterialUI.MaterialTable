@@ -1,7 +1,9 @@
 namespace Feliz.MaterialUI.MaterialTable
 
+open Fable.Core
+open Fable.Core.JsInterop
+
 module Bindings =
-    open Fable.Core
     open Feliz
     open Feliz.MaterialUI
         
@@ -29,8 +31,8 @@ module Bindings =
     type CurrencySetting =
         abstract locale: string option with get, set
         abstract currencyCode: string option with get, set
-        abstract minimumFractionDigits: float option with get, set
-        abstract maximumFractionDigits: float option with get, set
+        abstract minimumFractionDigits: int option with get, set
+        abstract maximumFractionDigits: int option with get, set
 
     [<AllowNullLiteral>]
     type TableData =
@@ -51,16 +53,15 @@ module Bindings =
         abstract value: obj option with get, set
         abstract onChange: (obj option -> unit) with get, set
         abstract columnDef: EditCellColumnDef with get, set
-        
 
     [<AllowNullLiteral>]
     type Column<'RowData> =
         abstract cellStyle: U2<obj, (ResizeArray<'RowData> -> 'RowData -> obj)> option with get, set
         abstract currencySetting: CurrencySetting option with get, set
         abstract customFilterAndSearch: (obj option -> 'RowData -> Column<'RowData> -> bool) option with get, set
-        abstract customSort: ('RowData -> 'RowData -> ColumnType -> float) option with get, set
+        abstract customSort: ('RowData -> 'RowData -> ColumnType -> int) option with get, set
         abstract defaultFilter: obj option with get, set
-        abstract defaultGroupOrder: float option with get, set
+        abstract defaultGroupOrder: int option with get, set
         abstract defaultGroupSort: U2<string, string> option with get, set
         abstract defaultSort: U2<string, string> option with get, set
         abstract disableClick: bool option with get, set
@@ -95,17 +96,17 @@ module Bindings =
     [<AllowNullLiteral>] 
     type Query<'RowData> =
         abstract filters: ResizeArray<Filter<'RowData>> with get, set
-        abstract page: float with get, set
-        abstract pageSize: float with get, set
+        abstract page: int with get, set
+        abstract pageSize: int with get, set
         abstract search: string with get, set
         abstract orderBy: Column<'RowData> with get, set
         abstract orderDirection: OrderDirection with get, set
     
     [<AllowNullLiteral>]
-    type QueryResult<'RowData> =
+    type QueryResultNative<'RowData> =
         abstract data: ResizeArray<'RowData> with get, set
-        abstract page: float with get, set
-        abstract totalCount: float with get, set
+        abstract page: int with get, set
+        abstract totalCount: int with get, set
 
     [<StringEnum; RequireQualifiedAccess>]
     type MuiIconColors =
@@ -159,3 +160,204 @@ module Bindings =
             abstract size: string option with get, set
             
         // Finish this
+
+    type [<AllowNullLiteral>] Components =
+        abstract Action: ReactElement option with get, set
+        abstract Actions: ReactElement option with get, set
+        abstract Body: ReactElement option with get, set
+        abstract Cell: ReactElement option with get, set
+        abstract Container: ReactElement option with get, set
+        abstract EditField: ReactElement option with get, set
+        abstract EditRow: ReactElement option with get, set
+        abstract FilterRow: ReactElement option with get, set
+        abstract Groupbar: ReactElement option with get, set
+        abstract GroupRow: ReactElement option with get, set
+        abstract Header: ReactElement option with get, set
+        abstract Pagination: ReactElement option with get, set
+        abstract OverlayLoading: ReactElement option with get, set
+        abstract Row: ReactElement option with get, set
+        abstract Toolbar: ReactElement option with get, set
+
+    type [<AllowNullLiteral>] DetailPanel<'RowData> =
+        abstract disabled: bool option with get, set
+        abstract icon: U2<string, ReactElement> option with get, set
+        abstract openIcon: U2<string, ReactElement> option with get, set
+        abstract tooltip: string option with get, set
+        abstract render: ('RowData -> U2<string, ReactElement>) with get, set
+
+    type [<AllowNullLiteral>] Editable<'RowData> =
+        abstract isEditable: ('RowData -> bool) option with get, set
+        abstract isDeletable: ('RowData -> bool) option with get, set
+        abstract onRowAdd: ('RowData -> JS.Promise<unit>) option with get, set
+        abstract onRowUpdate: ('RowData -> 'RowData -> JS.Promise<unit>) option with get, set
+        abstract onRowDelete: ('RowData -> JS.Promise<unit>) option with get, set
+
+    type [<AllowNullLiteral>] Icons =
+        abstract Add: ReactElement option with get, set
+        abstract Check: ReactElement option with get, set
+        abstract Clear: ReactElement option with get, set
+        abstract Delete: ReactElement option with get, set
+        abstract DetailPanel: ReactElement option with get, set
+        abstract Edit: ReactElement option with get, set
+        abstract Export: ReactElement option with get, set
+        abstract Filter: ReactElement option with get, set
+        abstract FirstPage: ReactElement option with get, set
+        abstract SortArrow: ReactElement option with get, set
+        abstract LastPage: ReactElement option with get, set
+        abstract NextPage: ReactElement option with get, set
+        abstract PreviousPage: ReactElement option with get, set
+        abstract ResetSearch: ReactElement option with get, set
+        abstract Search: ReactElement option with get, set
+        abstract ThirdStateCheck: ReactElement option with get, set
+        abstract ViewColumn: ReactElement option with get, set
+
+    type [<AllowNullLiteral>] Options =
+        abstract actionsCellStyle: obj option with get, set
+        abstract actionsColumnIndex: int option with get, set
+        abstract addRowPosition: U2<string, string> option with get, set
+        abstract columnsButton: bool option with get, set
+        abstract defaultExpanded: U2<bool, (obj option -> bool)> option with get, set
+        abstract debounceInterval: int option with get, set
+        abstract detailPanelType: U2<string, string> option with get, set
+        abstract doubleHorizontalScroll: bool option with get, set
+        abstract draggable: bool option with get, set
+        abstract emptyRowsWhenPaging: bool option with get, set
+        abstract exportAllData: bool option with get, set
+        abstract exportButton: bool option with get, set
+        abstract exportDelimiter: string option with get, set
+        abstract exportFileName: string option with get, set
+        abstract exportCsv: (ResizeArray<obj option> -> ResizeArray<obj option> -> unit) option with get, set
+        abstract filtering: bool option with get, set
+        abstract filterCellStyle: obj option with get, set
+        abstract groupRowSeparator: string option with get, set
+        abstract header: bool option with get, set
+        abstract headerStyle: obj option with get, set
+        abstract hideFilterIcons: bool option with get, set
+        abstract initialPage: int option with get, set
+        abstract loadingType: U2<string, string> option with get, set
+        abstract maxBodyHeight: U2<int, string> option with get, set
+        abstract minBodyHeight: U2<int, string> option with get, set
+        abstract padding: U2<string, string> option with get, set
+        abstract paging: bool option with get, set
+        abstract grouping: bool option with get, set
+        abstract pageSize: int option with get, set
+        abstract pageSizeOptions: ResizeArray<int> option with get, set
+        abstract paginationType: U2<string, string> option with get, set
+        abstract rowStyle: U2<obj, (obj option -> int -> int -> obj)> option with get, set
+        abstract showEmptyDataSourceMessage: bool option with get, set
+        abstract showFirstLastPageButtons: bool option with get, set
+        abstract showSelectAllCheckbox: bool option with get, set
+        abstract showTitle: bool option with get, set
+        abstract showTextRowsSelected: bool option with get, set
+        abstract search: bool option with get, set
+        abstract searchFieldAlignment: U2<string, string> option with get, set
+        abstract searchFieldStyle: obj option with get, set
+        abstract selection: bool option with get, set
+        abstract selectionProps: U2<obj option, (obj option -> obj option)> option with get, set
+        abstract sorting: bool option with get, set
+        abstract thirdSortClick: bool option with get, set
+        abstract toolbar: bool option with get, set
+        abstract toolbarButtonAlignment: U2<string, string> option with get, set
+        abstract detailPanelColumnAlignment: U2<string, string> option with get, set
+
+    type [<AllowNullLiteral>] filterRow =
+        abstract filterTooltip: string option with get, set
+
+    type [<AllowNullLiteral>] editRow =
+        abstract saveTooltip: string option with get, set
+        abstract cancelTooltip: string option with get, set
+        abstract deleteText: string option with get, set
+
+    type [<AllowNullLiteral>] body =
+        abstract dateTimePickerLocalization: obj option with get, set
+        abstract emptyDataSourceMessage: string option with get, set
+        abstract filterRow: filterRow option with get, set
+        abstract editRow: editRow option with get, set
+        abstract addTooltip: string option with get, set
+        abstract deleteTooltip: string option with get, set
+        abstract editTooltip: string option with get, set
+
+    type [<AllowNullLiteral>] header =
+        abstract actions: string option with get, set
+
+    type [<AllowNullLiteral>] grouping =
+        abstract groupedBy: string option with get, set
+        abstract placeholder: string option with get, set
+
+    type [<AllowNullLiteral>] pagination =
+        abstract firstTooltip: string option with get, set
+        abstract firstAriaLabel: string option with get, set
+        abstract previousTooltip: string option with get, set
+        abstract previousAriaLabel: string option with get, set
+        abstract nextTooltip: string option with get, set
+        abstract nextAriaLabel: string option with get, set
+        abstract labelDisplayedRows: string option with get, set
+        abstract labelRowsPerPage: string option with get, set
+        abstract lastTooltip: string option with get, set
+        abstract lastAriaLabel: string option with get, set
+        abstract labelRowsSelect: string option with get, set
+
+    type [<AllowNullLiteral>] toolbar =
+        abstract addRemoveColumns: string option with get, set
+        abstract nRowsSelected: string option with get, set
+        abstract showColumnsTitle: string option with get, set
+        abstract showColumnsAriaLabel: string option with get, set
+        abstract exportTitle: string option with get, set
+        abstract exportAriaLabel: string option with get, set
+        abstract exportName: string option with get, set
+        abstract searchTooltip: string option with get, set
+        abstract searchPlaceholder: string option with get, set
+
+    type [<AllowNullLiteral>] Localization =
+        abstract body: body option with get, set
+        abstract header: header option with get, set
+        abstract grouping: grouping option with get, set
+        abstract pagination: pagination option with get, set
+        abstract toolbar: toolbar option with get, set
+
+    type [<AllowNullLiteral>] MaterialTableProps<'RowData> =
+        abstract actions: ResizeArray<U2<Action<'RowData>, ('RowData -> Action<'RowData>)>> option with get, set
+        abstract columns: ResizeArray<Column<'RowData>> with get, set
+        abstract components: Components option with get, set
+        abstract data: U2<ResizeArray<'RowData>, (Query<'RowData> -> JS.Promise<QueryResultNative<'RowData>>)> with get, set
+        abstract detailPanel: U2<('RowData -> ReactElement), ResizeArray<U2<DetailPanel<'RowData>, ('RowData -> DetailPanel<'RowData>)>>> option with get, set
+        abstract editable: Editable<'RowData> option with get, set
+        abstract icons: Icons option with get, set
+        abstract isLoading: bool option with get, set
+        abstract title: U2<string, ReactElement> option with get, set
+        abstract options: Options option with get, set
+        abstract parentChildData: ('RowData -> ResizeArray<'RowData> -> 'RowData option) option with get, set
+        abstract localization: Localization option with get, set
+        abstract onChangeRowsPerPage: (int -> unit) option with get, set
+        abstract onChangePage: (int -> unit) option with get, set
+        abstract onChangeColumnHidden: (Column<'RowData> -> bool -> unit) option with get, set
+        abstract onColumnDragged: (int -> int -> unit) option with get, set
+        abstract onOrderChange: (int -> U2<string, string> -> unit) option with get, set
+        abstract onGroupRemoved: (Column<'RowData> -> bool -> unit) option with get, set
+        abstract onRowClick: (Browser.Types.MouseEvent -> 'RowData -> (int -> unit) -> unit) option with get, set
+        abstract onRowSelected: ('RowData -> unit) option with get, set
+        abstract onSearchChange: (string -> unit) option with get, set
+        /// An event fired when the table has finished filtering data
+        abstract onFilterChange: (ResizeArray<Filter<'RowData>> -> unit) option with get, set
+        abstract onSelectionChange: (ResizeArray<'RowData> -> 'RowData -> unit) option with get, set
+        abstract onTreeExpandChange: (obj option -> bool -> unit) option with get, set
+        abstract onQueryChange: (Query<'RowData> -> unit) option with get, set
+        abstract style: obj option with get, set
+        abstract tableRef: Fable.React.IRefValue<MaterialTableProps<'RowData>> option with get, set
+        abstract page: int option with get, set
+        abstract totalCount: int option with get, set
+
+type QueryResult<'RowData> =
+    { data: 'RowData seq
+      page: int
+      totalCount: int }
+    member this.Native =
+        jsOptions<Bindings.QueryResultNative<'RowData>> (fun qr ->
+            qr.data <- this.data |> ResizeArray
+            qr.page <- this.page
+            qr.totalCount <- this.totalCount)
+
+module QueryResult =
+    let mapPromiseToNative (prom: JS.Promise<QueryResult<'RowData>>) =
+        prom
+        |> Promise.map (fun p -> p.Native)

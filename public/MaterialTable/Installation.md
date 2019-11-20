@@ -1,42 +1,36 @@
-# Feliz.MaterialUI.Pickers - Installation
+# Feliz.MaterialUI.MaterialTable - Installation
 
-To install `Feliz.MaterialUI.Pickers` into your project, you need to install the nuget package into your F# project
+To install `Feliz.MaterialUI.MaterialTable` into your project, you need to install the nuget package into your F# project
 ```bash
 # nuget
-dotnet add package Feliz.MaterialUI.Pickers
+dotnet add package Feliz.MaterialUI.MaterialTable
 # paket
-paket add Feliz.MaterialUI.Pickers --project ./project/path
+paket add Feliz.MaterialUI.MaterialTable --project ./project/path
 ```
 Then you need to install the corresponding npm dependencies:
 ```bash
-npm install react
-npm install react-dom
-npm install @date-io/core
-npm install @date-io/date-fns
-npm install @material-ui/core
-npm install @material-ui/lab
-npm install @material-ui/pickers
-npm install date-fns
-npm install prop-types
+npm install material-design-icons (if you want to import css via scss)
+npm install material-table
 
 ___
 
-yarn add react
-yarn add react-dom
-yarn add @date-io/core
-yarn add @date-io/date-fns
-yarn add @material-ui/core
-yarn add @material-ui/lab
-yarn add @material-ui/pickers
-yarn add date-fns
-yarn add prop-types
+yarn add material-design-icons (if you want to import css via scss)
+yarn add material-table
 ```
+
+If you opt to not use scss in your project you can add the icons to your html:
+
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+```
+
+The last option for icons is to implement the icons yourself.
 
 ### Use Femto
 
 If you happen to use [Femto](https://github.com/Zaid-Ajaj/Femto), then it can install everything for you in one go
 ```bash
 cd ./project
-femto install Feliz.MaterialUI.Pickers
+femto install Feliz.MaterialUI.MaterialTable
 ```
 Here, the nuget package will be installed using the package manager that the project is using (detected by Femto) and then the required npm packages will be resolved.

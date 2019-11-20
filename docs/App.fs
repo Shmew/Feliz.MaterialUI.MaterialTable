@@ -195,7 +195,15 @@ let samples =
       "materialtable-componentoverriding", Samples.ComponentOverriding.render()
       "materialtable-customcolumnrendering", Samples.CustomColumnRendering.render()
       "materialtable-detailpanel", Samples.DetailPanel.render()
-      "materialtable-editable", Samples.Editable.render() ]
+      "materialtable-editable", Samples.Editable.render()
+      "materialtable-export", Samples.Export.render()
+      "materialtable-filtering", Samples.Filtering.render()
+      "materialtable-grouping", Samples.Grouping.render()
+      "materialtable-localization", Samples.Localization.render()
+      "materialtable-remotedata", Samples.RemoteData.render()
+      "materialtable-selection", Samples.Selection.render()
+      "materialtable-styling", Samples.Styling.render()
+      "materialtable-treedata", Samples.TreeData.render() ]
 
 module MarkdownView =
 
@@ -423,6 +431,15 @@ let sidebar (model: Model) =
             nestedMenuItem "Custom Column Rendering" [ Urls.CustomColumnRendering ]
             nestedMenuItem "Detail Panel" [ Urls.DetailPanel ]
             nestedMenuItem "Editable Rows" [ Urls.Editable ]
+            nestedMenuItem "Exporting Data" [ Urls.Export ]
+            nestedMenuItem "Filtering" [ Urls.Filtering ]
+            nestedMenuItem "Grouping" [ Urls.Grouping ]
+            nestedMenuItem "Localization" [ Urls.Localization ]
+            nestedMenuItem "Remote Data" [ Urls.RemoteData ]
+            nestedMenuItem "Row Selection" [ Urls.Selection ]
+            nestedMenuItem "Styling" [ Urls.Styling ]
+            nestedMenuItem "Tree Data" [ Urls.TreeData ]
+            
         ]
     ]
 
@@ -440,6 +457,14 @@ let content model =
     | [ Urls.MaterialTable; Urls.Examples; Urls.CustomColumnRendering ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "CustomColumnRendering.md" ]
     | [ Urls.MaterialTable; Urls.Examples; Urls.DetailPanel ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "DetailPanel.md" ]
     | [ Urls.MaterialTable; Urls.Examples; Urls.Editable ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Editable.md" ]
+    | [ Urls.MaterialTable; Urls.Examples; Urls.Export ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Export.md" ]
+    | [ Urls.MaterialTable; Urls.Examples; Urls.Filtering ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Filtering.md" ]
+    | [ Urls.MaterialTable; Urls.Examples; Urls.Grouping ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Grouping.md" ]
+    | [ Urls.MaterialTable; Urls.Examples; Urls.Localization ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Localization.md" ]
+    | [ Urls.MaterialTable; Urls.Examples; Urls.RemoteData ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "RemoteData.md" ]
+    | [ Urls.MaterialTable; Urls.Examples; Urls.Selection ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Selection.md" ]
+    | [ Urls.MaterialTable; Urls.Examples; Urls.Styling ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Styling.md" ]
+    | [ Urls.MaterialTable; Urls.Examples; Urls.TreeData ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "TreeData.md" ]
     | _ -> lazyView loadMarkdown [ "MaterialTable"; "README.md" ]
 
 let render' = React.functionComponent (fun (input: {| model: Model; dispatch: Msg -> unit |}) ->
@@ -462,7 +487,7 @@ let render' = React.functionComponent (fun (input: {| model: Model; dispatch: Ms
                                 toolbar.children [ 
                                     Mui.typography [
                                         prop.className c.title
-                                        prop.text "Feliz.MaterialUI.Pickers"
+                                        prop.text "Feliz.MaterialUI.MaterialTable"
                                         typography.align.left
                                     ]
                                     Mui.iconButton [ 
@@ -478,7 +503,7 @@ let render' = React.functionComponent (fun (input: {| model: Model; dispatch: Ms
                                     ]
                                     Mui.iconButton [
                                         prop.className c.titleButton
-                                        prop.href "https://github.com/Shmew/Feliz.MaterialUI.Pickers"
+                                        prop.href "https://github.com/Shmew/Feliz.MaterialUI.MaterialTable"
                                         prop.custom ("target", "_blank")
                                         iconButton.disableRipple true
 

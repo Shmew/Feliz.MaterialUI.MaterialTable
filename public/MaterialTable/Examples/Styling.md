@@ -1,13 +1,12 @@
-﻿# Feliz.MaterialUI.MaterialTable - Detail Panel
+﻿# Feliz.MaterialUI.MaterialTable - Styling
 
-Taken from [material-table - Detail Panel](https://material-table.com/#/docs/features/detail-panel)
+Taken from [material-table - Styling](https://material-table.com/#/docs/features/styling)
 
-```fsharp:materialtable-detailpanel
+```fsharp:materialtable-styling
 [<RequireQualifiedAccess>]
-module Samples.DetailPanel
+module Samples.Styling
 
 open Feliz
-open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -18,11 +17,18 @@ type private RowData =
 
 let render = React.functionComponent (fun () ->
     Mui.materialTable [
-        materialTable.title "Detail Panel With RowClick Preview"
+        materialTable.title "Styling Preview"
         materialTable.columns [
             columns.column [
                 column.title "Name"
                 column.field "name"
+                column.cellStyle [
+                    style.backgroundColor "#039BE5"
+                    style.color "#FFF"
+                ]
+                column.headerStyle [
+                    style.backgroundColor "#039BE5"
+                ]
             ]
             columns.column [
                 column.title "Surname"
@@ -52,16 +58,11 @@ let render = React.functionComponent (fun () ->
               birthYear = 2017
               birthCity = 34 }
         ]
-        materialTable.detailPanels<RowData> (fun rowData ->
-            Mui.cardMedia [
-                cardMedia.component' "iframe"
-                cardMedia.src "https://www.youtube.com/embed/C0DPdy98e4c"
-                Interop.mkAttr "width" "100%" // See https://github.com/Zaid-Ajaj/Feliz/pull/123
-                Interop.mkAttr "allow" "accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture" // See https://github.com/Zaid-Ajaj/Feliz/issues/124
-                prop.height 315
-                prop.style [ style.borderWidth 0 ]
+        materialTable.options [
+            options.headerStyle [
+                style.backgroundColor "#01579b"
+                style.color "#FFF"
             ]
-        )
-        materialTable.onRowClick (fun _ _ togglePanel -> togglePanel())
+        ]
     ])
 ```

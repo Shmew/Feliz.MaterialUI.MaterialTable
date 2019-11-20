@@ -1,8 +1,8 @@
 ﻿type project
-licenseExpression https://raw.githubusercontent.com/Shmew/Feliz.MaterialUI.Pickers/master/LICENSE
+licenseExpression https://raw.githubusercontent.com/Shmew/Feliz.MaterialUI.MaterialTable/master/LICENSE
 authors Cody Johnson
 description
-    Fable bindings written in the Feliz-style for material-ui-pickers
+    Fable bindings written in the Feliz-style for material-table
 language
     F#
 tags

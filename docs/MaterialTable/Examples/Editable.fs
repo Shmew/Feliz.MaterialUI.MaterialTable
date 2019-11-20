@@ -8,18 +8,21 @@ type private RowData =
     { name: string
       surname: string
       birthYear: int
-      birthCity: int }
+      birthCity: int
+      someDateTime: System.DateTime }
 
 let render = React.functionComponent (fun () ->
     let state, setState = 
-        [ { name = "Mehmet"; 
+        [ { name = "Mehmet"
             surname = "Baran"
             birthYear = 1987
-            birthCity = 63 }
+            birthCity = 63
+            someDateTime = System.DateTime.Now }
           { name = "Zerya Betül"
             surname = "Baran"
             birthYear = 2017
-            birthCity = 34 } ]
+            birthCity = 34 
+            someDateTime = System.DateTime.Today } ]
         |> React.useState
 
     Mui.materialTable [
@@ -46,6 +49,11 @@ let render = React.functionComponent (fun () ->
                     (34, "İstanbul")
                     (63, "Şanlıurfa") 
                 ]
+            ]
+            columns.column [
+                column.title "Some DateTime"
+                column.field "someDateTime"
+                column.type'.datetime
             ]
         ]
         materialTable.data state

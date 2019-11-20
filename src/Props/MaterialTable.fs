@@ -23,7 +23,8 @@ type materialTable =
     /// Data to be rendered
     static member inline data (values: 'T list) = Interop.mkMaterialTableAttr "data" (values |> ResizeArray)
     /// Data to be rendered
-    static member inline data (handler: Bindings.Query<'T> -> JS.Promise<Bindings.QueryResult<'T>>) = Interop.mkMaterialTableAttr "data" handler
+    static member inline data<'T> (handler: Bindings.Query<'T> -> JS.Promise<QueryResult<'T>>) = 
+        Interop.mkMaterialTableAttr "data" (fun query -> handler query |> QueryResult.mapPromiseToNative)
     /// Component(s) to be rendered on detail panel
     static member inline detailPanels (prop: IDetailPanelsProperty) = Interop.mkMaterialTableAttr "detailPanel" (prop |> Array.singleton |> ResizeArray)
     /// Component(s) to be rendered on detail panel
@@ -67,11 +68,15 @@ type materialTable =
     /// All options of table
     static member inline options (props: IOptionsProperty list) = Interop.mkMaterialTableAttr "options" (createObj !!props)
     /// Func that makes table parent-child table
-    static member inline parentChildData<'T> (handler: 'T -> 'T list -> 'T option) = Interop.mkMaterialTableAttr "parentChildData" (Func<_,_,_> handler)
+    static member inline parentChildData<'T> (handler: 'T -> 'T list -> 'T option) = 
+        Interop.mkMaterialTableAttr "parentChildData" (Func<_,_,_> (fun (row: 'T) (rows: ResizeArray<'T>) -> rows |> List.ofSeq |> handler row))
+    /// Func that makes table parent-child table
+    static member inline parentChildData<'T> (handler: 'T -> 'T [] -> 'T option) = 
+        Interop.mkMaterialTableAttr "parentChildData" (Func<_,_,_> (fun (row: 'T) (rows: ResizeArray<'T>) -> rows |> Array.ofSeq |> handler row))
     /// Could be use to pass ref over withStyles
     static member inline tableRef (handler: Element -> unit) = Interop.mkMaterialTableAttr "tableRef" handler
     /// Could be use to pass ref over withStyles
-    static member inline tableRef (ref: Fable.React.IRefValue<HTMLElement option>) = Interop.mkMaterialTableAttr "tableRef" ref
+    static member inline tableRef<'T> (ref: Fable.React.IRefValue<Bindings.MaterialTableProps<'T> option>) = Interop.mkMaterialTableAttr "tableRef" ref
     /// Table Title (only render if toolbar option is true)
     static member inline title (value: ReactElement) = Interop.mkMaterialTableAttr "title" value
     /// Table Title (only render if toolbar option is true)

@@ -1,13 +1,12 @@
-﻿# Feliz.MaterialUI.MaterialTable - Detail Panel
+﻿# Feliz.MaterialUI.MaterialTable - Selection
 
-Taken from [material-table - Detail Panel](https://material-table.com/#/docs/features/detail-panel)
+Taken from [material-table - Selection](https://material-table.com/#/docs/features/selection)
 
-```fsharp:materialtable-detailpanel
+```fsharp:materialtable-selection
 [<RequireQualifiedAccess>]
-module Samples.DetailPanel
+module Samples.Selection
 
 open Feliz
-open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -18,7 +17,7 @@ type private RowData =
 
 let render = React.functionComponent (fun () ->
     Mui.materialTable [
-        materialTable.title "Detail Panel With RowClick Preview"
+        materialTable.title "Selection Preview"
         materialTable.columns [
             columns.column [
                 column.title "Name"
@@ -52,16 +51,8 @@ let render = React.functionComponent (fun () ->
               birthYear = 2017
               birthCity = 34 }
         ]
-        materialTable.detailPanels<RowData> (fun rowData ->
-            Mui.cardMedia [
-                cardMedia.component' "iframe"
-                cardMedia.src "https://www.youtube.com/embed/C0DPdy98e4c"
-                Interop.mkAttr "width" "100%" // See https://github.com/Zaid-Ajaj/Feliz/pull/123
-                Interop.mkAttr "allow" "accelerometer; autoplay; encrypted-media; fullscreen; gyroscope; picture-in-picture" // See https://github.com/Zaid-Ajaj/Feliz/issues/124
-                prop.height 315
-                prop.style [ style.borderWidth 0 ]
-            ]
-        )
-        materialTable.onRowClick (fun _ _ togglePanel -> togglePanel())
+        materialTable.options [
+            options.selection true
+        ]
     ])
 ```

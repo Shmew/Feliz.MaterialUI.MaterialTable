@@ -1,12 +1,7 @@
-﻿# Feliz.MaterialUI.MaterialTable (alpha) [![Nuget](https://img.shields.io/nuget/v/Feliz.MaterialUI.MaterialTable.svg?maxAge=0&colorB=brightgreen)](https://www.nuget.org/packages/Feliz.MaterialUI.MaterialTable)
+﻿[<RequireQualifiedAccess>]
+module Samples.Localization
 
-Fable bindings for [material-table](https://github.com/mbrn/material-table) with [Feliz](https://github.com/Zaid-Ajaj/Feliz) style api for use within MaterialUI.
-
-Here is a quick look:
-
-```fs
 open Feliz
-open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -17,23 +12,23 @@ type private RowData =
 
 let render = React.functionComponent (fun () ->
     Mui.materialTable [
-        materialTable.title "Grouping Preview"
+        materialTable.title "Pêşdîtine Tabloye Kurdî"
         materialTable.columns [
             columns.column [
-                column.title "Name"
+                column.title "Nav"
                 column.field "name"
             ]
             columns.column [
-                column.title "Surname"
+                column.title "Paşnav"
                 column.field "surname"
             ]
             columns.column [
-                column.title "Birth Year"
+                column.title "Salê Zayîn"
                 column.field "birthYear"
                 column.type'.numeric
             ]
             columns.column [
-                column.title "Birth Place"
+                column.title "Cîhe Zayîn"
                 column.field "birthCity"
                 column.lookup<int,string> [ 
                     (34, "İstanbul")
@@ -51,7 +46,20 @@ let render = React.functionComponent (fun () ->
               birthYear = 2017
               birthCity = 34 }
         ]
+        materialTable.localization [
+            localization.body [
+                localization.body.emptyDataSourceMessage "Guherandinên ku tiştek tune"
+            ]
+            localization.toolbar [
+                localization.toolbar.searchTooltip "Lêgerîn"
+            ]
+            localization.pagination [
+                localization.pagination.labelRowsSelect "Xet"
+                localization.pagination.labelDisplayedRows " {from}-{to} xete {count}"
+                localization.pagination.firstTooltip "Rûpele Berîn"
+                localization.pagination.previousTooltip "Rûpele Berê"
+                localization.pagination.nextTooltip "Rûpele Piştî"
+                localization.pagination.lastTooltip "Rûpele Talî"
+            ]
+        ]
     ])
-```
-
-Feliz.MaterialUI.MaterialTable has documentation at [Feliz.MaterialUI.MaterialTable](https://shmew.github.io/Feliz.MaterialUI.MaterialTable/) with live examples along side code samples.

@@ -1,54 +1,72 @@
-# Feliz.MaterialUI.Pickers - Date Picker
+﻿# Feliz.MaterialUI.MaterialTable - Custom Column Rendering
 
-Taken from [material-ui-pickers - Date Picker](https://material-ui-pickers.dev/demo/datepicker)
+Taken from [material-table - Custom Column Rendering](https://material-table.com/#/docs/features/custom-column-rendering)
 
 ```fsharp:materialtable-customcolumnrendering
 [<RequireQualifiedAccess>]
-module Samples.Date.Basic
+module Samples.CustomColumnRendering
 
 open Feliz
 open Feliz.MaterialUI
-open Feliz.MaterialUI.Pickers
-open System
+open Feliz.MaterialUI.MaterialTable
 
-let render = React.functionComponent(fun () ->
-    let state,setState = React.useState(DateTime.Now)
+type private RowData =
+    { name: string
+      surname: string
+      birthYear: int
+      birthCity: int 
+      imageUrl: string }
 
-    Mui.pickerUtilsProvider [
-        Mui.grid [
-            grid.container true
-            grid.direction.row
-            grid.justify.spaceEvenly
-
-            prop.children [
-                Mui.datePicker [
-                    datePicker.label "Basic Example"
-                    datePicker.value state
-                    datePicker.onChange setState
-                    datePicker.animateYearScrolling true
-                ]
-                Mui.datePicker [
-                    datePicker.autoOk true
-                    datePicker.label "Clearable"
-                    datePicker.clearable true
-                    datePicker.disableFuture true
-                    datePicker.value state
-                    datePicker.onChange setState
-                ]
-                Mui.datePicker [
-                    datePicker.openTo.year
-                    datePicker.format "dd/MM/yyyy"
-                    datePicker.label "Date of Birth"
-                    datePicker.disableFuture true
-                    datePicker.views [
-                        datePicker.views.year
-                        datePicker.views.month
-                        datePicker.views.date
+let render = React.functionComponent (fun () ->
+    Mui.materialTable [
+        materialTable.title "Render Image Preview"
+        materialTable.columns [
+            columns.column [
+                column.title "Avatar"
+                column.field "imageUrl"
+                column.render<RowData> (fun rowData ->
+                    Mui.avatar [
+                        avatar.src rowData.imageUrl
+                        prop.style [ 
+                            style.width 40
+                            style.borderRadius (length.percent 50)
+                        ]
                     ]
-                    datePicker.value state
-                    datePicker.onChange setState
+                )
+            ]
+            columns.column [
+                column.title "Name"
+                column.field "name"
+            ]
+            columns.column [
+                column.title "Surname"
+                column.field "surname"
+            ]
+            columns.column [
+                column.title "Birth Year"
+                column.field "birthYear"
+                column.type'.numeric
+            ]
+            columns.column [
+                column.title "Birth Place"
+                column.field "birthCity"
+                column.lookup<int,string> [ 
+                    (34, "İstanbul")
+                    (63, "Şanlıurfa") 
                 ]
             ]
+        ]
+        materialTable.data [
+            { name = "Mehmet"
+              surname = "Baran"
+              birthYear = 1987
+              birthCity = 63
+              imageUrl = "https://avatars0.githubusercontent.com/u/7895451?s=460&v=4" }
+            { name = "Zerya Betül"
+              surname = "Baran"
+              birthYear = 2017
+              birthCity = 34
+              imageUrl = "https://avatars0.githubusercontent.com/u/7895451?s=460&v=4" }
         ]
     ])
 ```
