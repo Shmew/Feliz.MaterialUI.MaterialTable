@@ -7,6 +7,7 @@ Taken from [material-table - Localization](https://material-table.com/#/docs/fea
 module Samples.Localization
 
 open Feliz
+open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -16,7 +17,10 @@ type private RowData =
       birthCity: int }
 
 let render = React.functionComponent (fun () ->
+    let theme = Styles.useTheme()
+
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Pêşdîtine Tabloye Kurdî"
         materialTable.columns [
             columns.column [
@@ -65,6 +69,11 @@ let render = React.functionComponent (fun () ->
                 localization.pagination.previousTooltip "Rûpele Berê"
                 localization.pagination.nextTooltip "Rûpele Piştî"
                 localization.pagination.lastTooltip "Rûpele Talî"
+            ]
+        ]
+        materialTable.options [
+            options.headerStyle [
+                style.backgroundColor theme.palette.background.``default``
             ]
         ]
     ])

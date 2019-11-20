@@ -18,7 +18,10 @@ type private RowData =
       imageUrl: string }
 
 let render = React.functionComponent (fun () ->
+    let theme = Styles.useTheme()
+
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Render Image Preview"
         materialTable.columns [
             columns.column [
@@ -67,6 +70,11 @@ let render = React.functionComponent (fun () ->
               birthYear = 2017
               birthCity = 34
               imageUrl = "https://avatars0.githubusercontent.com/u/7895451?s=460&v=4" }
+        ]
+        materialTable.options [
+            options.headerStyle [
+                style.backgroundColor theme.palette.background.``default``
+            ]
         ]
     ])
 ```

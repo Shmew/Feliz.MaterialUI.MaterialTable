@@ -7,6 +7,7 @@ Taken from [material-table - Editable](https://material-table.com/#/docs/feature
 module Samples.Editable
 
 open Feliz
+open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -30,7 +31,10 @@ let render = React.functionComponent (fun () ->
             someDateTime = System.DateTime.Today } ]
         |> React.useState
 
+    let theme = Styles.useTheme()
+
     Mui.materialTable [
+        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Editable Preview"
         materialTable.columns [
             columns.column [
@@ -86,6 +90,11 @@ let render = React.functionComponent (fun () ->
                     res()
                 )
             )
+        ]
+        materialTable.options [
+            options.headerStyle [
+                style.backgroundColor theme.palette.background.``default``
+            ]
         ]
     ])
 ```

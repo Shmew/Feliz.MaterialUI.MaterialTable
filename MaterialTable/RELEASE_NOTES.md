@@ -1,3 +1,6 @@
+### 0.2.0 - Wednesday, November 20, 2019
+* Fix materialTable not accepting base react properties
+
 ### 0.1.0 - Wednesday, November 20, 2019
 * Finish examples
 * Flesh out api
