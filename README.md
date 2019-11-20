@@ -17,7 +17,7 @@ type private RowData =
 
 let render = React.functionComponent (fun () ->
     Mui.materialTable [
-        materialTable.title "Grouping Preview"
+        materialTable.title "My Title"
         materialTable.columns [
             columns.column [
                 column.title "Name"
