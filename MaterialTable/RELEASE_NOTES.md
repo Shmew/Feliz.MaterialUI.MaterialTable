@@ -1,3 +1,6 @@
+### 0.3.0 - Wednesday, November 20, 2019
+* Add more component support
+
 ### 0.2.0 - Wednesday, November 20, 2019
 * Fix materialTable not accepting base react properties
 

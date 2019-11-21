@@ -71,10 +71,5 @@ let render = React.functionComponent (fun () ->
                 localization.pagination.lastTooltip "Rûpele Talî"
             ]
         ]
-        materialTable.options [
-            options.headerStyle [
-                style.backgroundColor theme.palette.background.``default``
-            ]
-        ]
     ])
 ```
