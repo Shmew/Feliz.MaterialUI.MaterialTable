@@ -91,10 +91,5 @@ let render = React.functionComponent (fun () ->
                 )
             )
         ]
-        materialTable.options [
-            options.headerStyle [
-                style.backgroundColor theme.palette.background.``default``
-            ]
-        ]
     ])
 ```

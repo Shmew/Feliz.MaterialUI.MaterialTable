@@ -124,9 +124,6 @@ let render = React.functionComponent (fun () ->
         )
         materialTable.options [
             options.selection true
-            options.headerStyle [
-                style.backgroundColor theme.palette.background.``default``
-            ]
         ]
     ])
 ```

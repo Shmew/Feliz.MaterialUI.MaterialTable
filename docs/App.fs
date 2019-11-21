@@ -8,6 +8,7 @@ open Fable.SimpleHttp
 open Feliz
 open Feliz.Markdown
 open Feliz.MaterialUI
+open Feliz.MaterialUI.MaterialTable
 open Feliz.Router
 open Fable.Core.JsInterop
 
@@ -46,10 +47,31 @@ module AppTheme =
                 p.error <-
                     !^(jsOptions<PaletteIntention> (fun pi -> pi.main <- theme.Error))))
 
+    let private applyTheme (theme: Theme) =
+        theme.setOverrides [
+            overrides.muiPaper [
+                overrides.muiPaper.elevation2 [
+                    style.custom ("box-shadow", theme.shadows.[8])
+                    style.backgroundColor theme.palette.background.``default``
+                ]
+            ]
+            overrides.muiTableCell [
+                overrides.muiTableCell.footer [
+                    style.borderRadius 4
+                    style.borderWidth 0
+                ]
+                overrides.muiTableCell.head [
+                    style.backgroundColor (theme.palette.background.``default`` + "!important")
+                ]
+            ]
+        ]
+        theme
+
     let getTheme b =
         if b then AppTheme.Dark
         else AppTheme.Light
         |> buildTheme
+        |> applyTheme
 
     let useStyles : unit -> _ = Styles.makeStyles <| fun (theme: Theme) ->
         let drawerWidth = 200
@@ -95,6 +117,7 @@ module AppTheme =
            sampleApp = Styles.create 
                    [ style.paddingTop (length.em 2)
                      style.paddingBottom (length.em 2) ]
+           mtBackground = Styles.create [ style.backgroundColor theme.palette.background.``default`` ]
            title = Styles.create [ style.width (length.percent 100) ]
            titleButton =
                Styles.create

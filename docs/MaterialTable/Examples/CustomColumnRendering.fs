@@ -66,9 +66,4 @@ let render = React.functionComponent (fun () ->
               birthCity = 34
               imageUrl = "https://avatars0.githubusercontent.com/u/7895451?s=460&v=4" }
         ]
-        materialTable.options [
-            options.headerStyle [
-                style.backgroundColor theme.palette.background.``default``
-            ]
-        ]
     ])

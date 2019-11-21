@@ -88,7 +88,7 @@ let private view = React.functionComponent (fun (input: {| model: Model; dispatc
         ]
         materialTable.options [
             options.headerStyle [
-                style.backgroundColor theme.palette.background.``default``
+                style.paddingLeft (length.em 1)
             ]
         ]
     ])

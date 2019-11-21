@@ -145,21 +145,20 @@ module Bindings =
 
     module Components =
         [<AllowNullLiteral>]
+        type RefComponent =
+            abstract current: ReactElement option with get, set
+
+        [<AllowNullLiteral>]
+        type StyledComponent =
+            abstract classes: obj option with get, set
+            abstract innerRef: RefComponent option with get, set
+
+        [<AllowNullLiteral>]
         type ActionProps<'RowData> =
             abstract action: U2<Action<'RowData>, U2<'RowData, ResizeArray<'RowData>> -> Action<'RowData>> with get, set
             abstract data: U2<'RowData, ResizeArray<'RowData>> option with get, set
             abstract disabled: bool option with get, set
             abstract size: string option with get, set
-
-        [<AllowNullLiteral>]
-        type ActionsProps<'RowData> =
-            abstract action: ResizeArray<Action<'RowData>> with get, set
-            abstract components: obj with get, set
-            abstract data: U2<ResizeArray<'RowData>, 'RowData> option with get, set
-            abstract disabled: bool option with get, set
-            abstract size: string option with get, set
-            
-        // Finish this
 
     type [<AllowNullLiteral>] Components =
         abstract Action: ReactElement option with get, set

@@ -57,9 +57,6 @@ let render = React.functionComponent (fun () ->
         ]
         materialTable.options [
             options.exportButton true
-            options.headerStyle [
-                style.backgroundColor theme.palette.background.``default``
-            ]
         ]
     ])
 ```

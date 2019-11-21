@@ -27,7 +27,6 @@ let private buildUrl pageSize page =
     sprintf "https://reqres.in/api/users?per_page=%i&page=%i" pageSize (page + 1)
 
 let render = React.functionComponent (fun () ->
-    //let tableRef = Fable.React.HookBindings.Hooks.useRef<Bindings.MaterialTableProps<RowData>> (jsOptions<Bindings.MaterialTableProps<RowData>>(fun _ -> ()))
     let theme = Styles.useTheme()
 
     Mui.materialTable [
@@ -80,17 +79,4 @@ let render = React.functionComponent (fun () ->
                 |> Async.StartImmediate
             )
         )
-        //materialTable.actions [
-        //    actions.action [
-        //        action.icon (refreshIcon [])
-        //        action.tooltip "Refresh Data"
-        //        action.isFreeAction true
-                //action.onClick <| fun _ -> tableRef.current.onQueryChange()
-        //    ]
-        //]
-        materialTable.options [
-            options.headerStyle [
-                style.backgroundColor theme.palette.background.``default``
-            ]
-        ]
     ])

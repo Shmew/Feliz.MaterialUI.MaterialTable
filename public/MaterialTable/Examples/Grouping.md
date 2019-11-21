@@ -58,9 +58,6 @@ let render = React.functionComponent (fun () ->
         ]
         materialTable.options [
             options.grouping true
-            options.headerStyle [
-                style.backgroundColor theme.palette.background.``default``
-            ]
         ]
     ])
 ```
