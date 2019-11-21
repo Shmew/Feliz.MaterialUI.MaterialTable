@@ -6,6 +6,7 @@ Taken from [material-table - Custom Column Rendering](https://material-table.com
 [<RequireQualifiedAccess>]
 module Samples.CustomColumnRendering
 
+open Fable.Core.Experimental
 open Feliz
 open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
@@ -39,20 +40,20 @@ let render = React.functionComponent (fun () ->
             ]
             columns.column [
                 column.title "Name"
-                column.field "name"
+                column.field<RowData> (fun rd -> nameof rd.name)
             ]
             columns.column [
                 column.title "Surname"
-                column.field "surname"
+                column.field<RowData> (fun rd -> nameof rd.surname)
             ]
             columns.column [
                 column.title "Birth Year"
-                column.field "birthYear"
+                column.field<RowData> (fun rd -> nameof rd.birthYear)
                 column.type'.numeric
             ]
             columns.column [
                 column.title "Birth Place"
-                column.field "birthCity"
+                column.field<RowData> (fun rd -> nameof rd.birthCity)
                 column.lookup<int,string> [ 
                     (34, "İstanbul")
                     (63, "Şanlıurfa") 

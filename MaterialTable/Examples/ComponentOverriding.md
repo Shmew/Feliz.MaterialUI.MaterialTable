@@ -8,6 +8,7 @@ module Samples.ComponentOverriding
 
 open Elmish.SweetAlert
 open Fable.Core
+open Fable.Core.Experimental
 open Fable.MaterialUI.Icons
 open Feliz
 open Feliz.ElmishComponents
@@ -50,20 +51,20 @@ let private view = React.functionComponent (fun (input: {| model: Model; dispatc
         materialTable.columns [
             columns.column [
                 column.title "Name"
-                column.field "name"
+                column.field<RowData> (fun rd -> nameof rd.name)
             ]
             columns.column [
                 column.title "Surname"
-                column.field "surname"
+                column.field<RowData> (fun rd -> nameof rd.surname)
             ]
             columns.column [
                 column.title "Birth Year"
-                column.field "birthYear"
+                column.field<RowData> (fun rd -> nameof rd.birthYear)
                 column.type'.numeric
             ]
             columns.column [
                 column.title "Birth Place"
-                column.field "birthCity"
+                column.field<RowData> (fun rd -> nameof rd.birthCity)
                 column.lookup<int,string> [ 
                     (34, "İstanbul")
                     (63, "Şanlıurfa") 

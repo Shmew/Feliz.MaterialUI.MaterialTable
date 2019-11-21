@@ -1,3 +1,6 @@
+### 0.3.1 - Thursday, November 21, 2019
+* Added selector capabilities to provide type safety for column fields
+
 ### 0.3.0 - Wednesday, November 20, 2019
 * Add more component support
 
