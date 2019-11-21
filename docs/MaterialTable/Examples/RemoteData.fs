@@ -2,6 +2,7 @@
 module Samples.RemoteData
 
 open Fable.Core.JsInterop
+open Fable.Core.Experimental
 open Fable.MaterialUI.Icons
 open Fable.SimpleHttp
 open Fable.SimpleJson
@@ -35,7 +36,7 @@ let render = React.functionComponent (fun () ->
         materialTable.columns [
             columns.column [
                 column.title "Avatar"
-                column.field "avatar"
+                column.field<RowData> (fun rd -> rd.avatar)
                 column.render<RowData> (fun rowData ->
                     Mui.avatar [
                         avatar.src rowData.avatar
@@ -48,15 +49,15 @@ let render = React.functionComponent (fun () ->
             ]
             columns.column [
                 column.title "Id"
-                column.field "id"
+                column.field<RowData> (fun rd -> nameof rd.id)
             ]
             columns.column [
                 column.title "First Name"
-                column.field "first_name"
+                column.field<RowData> (fun rd -> nameof rd.first_name)
             ]
             columns.column [
                 column.title "Last Name"
-                column.field "last_name"
+                column.field<RowData> (fun rd -> nameof rd.last_name)
             ]
         ]
         materialTable.data<RowData> (fun query ->

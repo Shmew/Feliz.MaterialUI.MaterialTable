@@ -35,6 +35,8 @@ type column =
     static member inline export (value: bool) = Interop.mkColumnAttr "export" value
     /// Field name of data row
     static member inline field (value: string) = Interop.mkColumnAttr "field" value
+    /// Field name of data row
+    static member inline field<'a> (select: 'a -> string) = Interop.mkColumnAttr "field" (select (unbox null)) 
     /// Flag to activate or disable filtering feature of column
     static member inline filtering (value: bool) = Interop.mkColumnAttr "filtering" value
     /// Filter cell style

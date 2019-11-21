@@ -1,6 +1,7 @@
 ﻿[<RequireQualifiedAccess>]
 module Samples.Localization
 
+open Fable.Core.Experimental
 open Feliz
 open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
@@ -20,20 +21,20 @@ let render = React.functionComponent (fun () ->
         materialTable.columns [
             columns.column [
                 column.title "Nav"
-                column.field "name"
+                column.field<RowData> (fun rd -> nameof rd.name)
             ]
             columns.column [
                 column.title "Paşnav"
-                column.field "surname"
+                column.field<RowData> (fun rd -> nameof rd.surname)
             ]
             columns.column [
                 column.title "Salê Zayîn"
-                column.field "birthYear"
+                column.field<RowData> (fun rd -> nameof rd.birthYear)
                 column.type'.numeric
             ]
             columns.column [
                 column.title "Cîhe Zayîn"
-                column.field "birthCity"
+                column.field<RowData> (fun rd -> nameof rd.birthCity)
                 column.lookup<int,string> [ 
                     (34, "İstanbul")
                     (63, "Şanlıurfa") 
