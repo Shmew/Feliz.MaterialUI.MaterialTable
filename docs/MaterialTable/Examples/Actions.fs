@@ -76,11 +76,11 @@ let private view = React.functionComponent (fun (input: {| model: Model; dispatc
                 action.isFreeAction true
                 action.onClick (fun _ _ -> input.dispatch AddRow)
             ]
-            actions.action [
+            actions.action<RowData> (fun rowData -> [
                 action.icon (Mui.icon [ saveIcon [] ])
-                action.tooltip "Save User"
+                action.tooltip (sprintf "Save %s" rowData.name)
                 action.onClick (fun _ _ -> input.dispatch SaveRow)
-            ]
+            ])
         ]
         materialTable.options [
             options.headerStyle [

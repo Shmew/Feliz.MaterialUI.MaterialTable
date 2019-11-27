@@ -27,3 +27,4 @@ type action =
 [<Erase>]
 type actions =
     static member inline action (props: IActionProperty list) = unbox (createObj !!props) : IActionsProperty
+    static member inline action<'T> (rowData: 'T -> IActionProperty list) = unbox (rowData >> (fun res -> createObj !!res)) : IActionsProperty
