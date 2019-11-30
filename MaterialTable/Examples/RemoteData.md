@@ -41,7 +41,7 @@ let render = React.functionComponent (fun () ->
         materialTable.columns [
             columns.column [
                 column.title "Avatar"
-                column.field<RowData> (fun rd -> rd.avatar)
+                column.field<RowData> (fun rd -> nameof rd.avatar)
                 column.render<RowData> (fun rowData ->
                     Mui.avatar [
                         avatar.src rowData.avatar
