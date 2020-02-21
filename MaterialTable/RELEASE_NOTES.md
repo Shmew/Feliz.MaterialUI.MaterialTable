@@ -1,3 +1,6 @@
+### 0.5.0 - Thursday, Feburary 20, 2020
+* Updated bindings for material-table version 1.57.2
+
 ### 0.4.0 - Tuesday, November 26, 2019
 * Add action overload to support functions
 
