@@ -41,6 +41,8 @@ type column =
     static member inline filtering (value: bool) = Interop.mkColumnAttr "filtering" value
     /// Filter cell style
     static member inline filterCellStyle (props: #IStyleAttribute list) = Interop.mkColumnAttr "filterCellStyle" (createObj !!props)
+    /// Filter component
+    static member inline filterComponent (value: ReactElement) = Interop.mkColumnAttr "filterComponent" value
     /// Filter textbox placeholder
     static member inline filterPlaceholder (value: string) = Interop.mkColumnAttr "filterPlaceholder" value
     /// Flag to activate or disable grouping feature of column

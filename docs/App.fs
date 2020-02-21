@@ -34,60 +34,57 @@ type AppTheme =
           Error = "#B00020" }
 
 module AppTheme =
-    let private buildTheme (theme: AppTheme) = Styles.createMuiTheme(jsOptions<Theme> <| fun t ->
-        t.palette <-
-            jsOptions<Palette> (fun p ->
-                p.``type`` <- theme.PaletteType
-                p.primary <-
-                    !^(jsOptions<PaletteIntention> (fun pi -> 
-                        pi.main <- theme.Primary
-                        pi.contrastText <- theme.PrimaryCT))
-                p.secondary <-
-                    !^(jsOptions<PaletteIntention> (fun pi -> pi.main <- theme.Secondary))
-                p.error <-
-                    !^(jsOptions<PaletteIntention> (fun pi -> pi.main <- theme.Error))))
+    let private defaultTheme = Styles.createMuiTheme()
 
-    let private applyTheme (theme: Theme) =
-        theme.setOverrides [
-            overrides.muiPaper [
-                overrides.muiPaper.elevation2 [
-                    style.custom ("box-shadow", theme.shadows.[8])
-                    style.backgroundColor theme.palette.background.``default``
-                ]
-            ]
-            overrides.muiTableCell [
-                overrides.muiTableCell.footer [
-                    style.borderRadius 4
-                    style.borderWidth 0
-                ]
-                overrides.muiTableCell.head [
-                    style.backgroundColor (theme.palette.background.``default`` + "!important")
-                ]
-            ]
+    let private isDark pType =
+        pType = PaletteType.Dark
+
+    let private buildTheme (appTheme: AppTheme) = Styles.createMuiTheme([
+        if isDark appTheme.PaletteType then theme.palette.type'.dark
+        else theme.palette.type'.light
+        theme.palette.primary'.main appTheme.Primary
+        theme.palette.primary'.contrastText appTheme.PrimaryCT
+        theme.palette.secondary'.main appTheme.Secondary
+        theme.palette.error'.main appTheme.Error
+
+        theme.overrides.muiPaper.elevation2 [
+            style.custom ("box-shadow", defaultTheme.shadows.[8])
+
+            if isDark appTheme.PaletteType then
+                style.backgroundColor "#303030"
+            else style.backgroundColor defaultTheme.palette.background.``default``
         ]
-        theme
+        theme.overrides.muiTableCell.footer [
+            style.borderRadius 4
+            style.borderWidth 0
+        ]
+        theme.overrides.muiTableCell.head [
+            if isDark appTheme.PaletteType then
+                style.backgroundColor "#303030 !important"
+            else style.backgroundColor (defaultTheme.palette.background.``default`` + "!important")
+        ]
+    ])
 
     let getTheme b =
         if b then AppTheme.Dark
         else AppTheme.Light
         |> buildTheme
-        |> applyTheme
 
-    let useStyles : unit -> _ = Styles.makeStyles <| fun (theme: Theme) ->
+    let useStyles : unit -> _ = Styles.makeStyles (fun styles (theme: Theme) ->
         let drawerWidth = 200
 
         {| appBar =
-            Styles.create
+            styles.create
                 [ style.zIndex (theme.zIndex.drawer + 1)
                   style.cursor "default"
                   style.userSelect.none
                   style.display.grid ]
            containerCard =
-               Styles.create 
+               styles.create 
                    [ style.padding (length.em 1) ]
-           contentCard = Styles.create [ style.height (length.percent 100) ]
+           contentCard = styles.create [ style.height (length.percent 100) ]
            content =
-               Styles.create
+               styles.create
                    [ style.flexGrow 1
                      style.height.inheritFromParent
                      style.paddingTop (length.em 6)
@@ -95,39 +92,39 @@ module AppTheme =
                      style.paddingRight (length.em 2)
                      style.paddingBottom (length.em 1) ]
            drawer =
-               Styles.create
+               styles.create
                    [ style.zIndex theme.zIndex.drawer
                      style.width drawerWidth
                      style.flexShrink 0 ]
-           drawerPaper = Styles.create [ style.width drawerWidth ]
+           drawerPaper = styles.create [ style.width drawerWidth ]
            fullSizeCard =
-               Styles.create
+               styles.create
                    [ style.paddingTop (length.em 1)
                      style.paddingBottom (length.em 1)
                      style.paddingLeft (length.em 5)
                      style.paddingRight (length.em 5)
                      style.flexGrow 1 ]
-           githubButton = Styles.create [ style.custom ("color", "inherit"); style.custom ("backgroundColor", "inherit") ]
-           githubText = Styles.create [ style.textTransform.none; style.margin 0 ]
+           githubButton = styles.create [ style.custom ("color", "inherit"); style.custom ("backgroundColor", "inherit") ]
+           githubText = styles.create [ style.textTransform.none; style.margin 0 ]
            root =
-               Styles.create
+               styles.create
                    [ style.display.flex
                      style.height.inheritFromParent
                      style.userSelect.none ]
-           sampleApp = Styles.create 
+           sampleApp = styles.create 
                    [ style.paddingTop (length.em 2)
                      style.paddingBottom (length.em 2) ]
-           mtBackground = Styles.create [ style.backgroundColor theme.palette.background.``default`` ]
-           title = Styles.create [ style.width (length.percent 100) ]
+           mtBackground = styles.create [ style.backgroundColor theme.palette.background.``default`` ]
+           title = styles.create [ style.width (length.percent 100) ]
            titleButton =
-               Styles.create
+               styles.create
                    [ style.padding 5
                      style.paddingRight 10
                      style.paddingLeft 10
                      style.color.white
                      style.borderRadius (length.percent 20) ]
-           toolbar = Styles.create [ yield! theme.mixins.toolbarStyles ]
-           unselectable = Styles.create [ style.userSelect.none ]|}
+           toolbar = styles.create [ yield! theme.mixins.toolbar ]
+           unselectable = styles.create [ style.userSelect.none ] |})
 
 module Store =
     open Browser.WebStorage
@@ -545,7 +542,7 @@ let render' = React.functionComponent (fun (input: {| model: Model; dispatch: Ms
                         prop.children [
                             Mui.drawer [ 
                                 drawer.variant.permanent
-                                drawer.classes [ classes.drawer.paper c.drawerPaper ]
+                                drawer.classes.paper c.drawerPaper
                                 drawer.children [ 
                                     Html.div [ 
                                         prop.className c.toolbar 

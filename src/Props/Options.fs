@@ -16,8 +16,12 @@ type options =
     static member inline debounceInterval (value: int) = Interop.mkOptionsAttr "debounceInterval" value
     /// Debounce interval for search and filter
     static member inline debounceInterval (value: float) = Interop.mkOptionsAttr "debounceInterval" value
+    /// Flag for expanded items
+    static member inline defaultExpanded (value: bool) = Interop.mkOptionsAttr "defaultExpanded" value
     /// Flag for double scroll bar for long tables
     static member inline doubleHorizontalScroll (value: bool) = Interop.mkOptionsAttr "doubleHorizontalScroll" value
+    /// Flag for drag and drop headers
+    static member inline draggable (value: bool) = Interop.mkOptionsAttr "draggable" value
     /// Flag for rendering rows to complete page size
     static member inline emptyRowsWhenPaging (value: bool) = Interop.mkOptionsAttr "emptyRowsWhenPaging" value
     /// Flag for export all data instead of rendered data
@@ -40,6 +44,8 @@ type options =
     static member inline header (value: bool) = Interop.mkOptionsAttr "header" value
     /// Header cell style for all headers
     static member inline headerStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "headerStyle" (createObj !!props)
+    /// Flag for hiding filter icons
+    static member inline hideFilterIcons (value: bool) = Interop.mkOptionsAttr "hideFilterIcons" value
     /// Max body height
     static member inline maxBodyHeight (value: int) = Interop.mkOptionsAttr "maxBodyHeight" value
     /// Max body height
@@ -68,30 +74,32 @@ type options =
     static member inline rowStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "rowStyle" (createObj !!props)
     /// Flag for showing message if there is no data in table
     static member inline showEmptyDataSourceMessage (value: bool) = Interop.mkOptionsAttr "showEmptyDataSourceMessage" value
+    /// Flag for search feature
+    static member inline search (value: bool) = Interop.mkOptionsAttr "search" value
+    /// Search field css style
+    static member inline searchFieldStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "searchFieldStyle" (createObj !!props)
+    /// Set the search text
+    static member inline searchText (value: string) = Interop.mkOptionsAttr "searchText" value
+    /// Flag for selection feature
+    static member inline selection (value: bool) = Interop.mkOptionsAttr "selection" value
+    /// Selection checkbox props
+    static member inline selectionProps<'T> (value: 'T option) = Interop.mkOptionsAttr "selectionProps" value
+    /// Selection checkbox props
+    static member inline selectionProps<'T> (value: 'T option -> 'T option) = Interop.mkOptionsAttr "selectionProps" value
     /// Flag for showing first and last page buttons on pagination component
     static member inline showFirstLastPageButtons (value: bool) = Interop.mkOptionsAttr "showFirstLastPageButtons" value
     /// Flag for showing select all checkbox
     static member inline showSelectAllCheckbox (value: bool) = Interop.mkOptionsAttr "showSelectAllCheckbox" value
     /// Flag for showing selected rows text on toolbar
     static member inline showTextRowsSelected (value: bool) = Interop.mkOptionsAttr "showTextRowsSelected" value
-    /// Flag for search feature
-    static member inline search (value: bool) = Interop.mkOptionsAttr "search" value
-    /// Search field css style
-    static member inline searchFieldStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "searchFieldStyle" (createObj !!props)
-    /// Flag for selection feature
-    static member inline selection (value: bool) = Interop.mkOptionsAttr "selection" value
-    /// Selection checkbox props
-    static member inline selectionProps (value: obj option) = Interop.mkOptionsAttr "selectionProps" value
-    /// Selection checkbox props
-    static member inline selectionProps (value: obj option -> obj option) = Interop.mkOptionsAttr "selectionProps" value
-    /// Flag to activate or disable sorting feature of table
-    static member inline sorting (value: bool) = Interop.mkOptionsAttr "sorting" value
-    /// Flag for toolbar
-    static member inline toolbar (value: bool) = Interop.mkOptionsAttr "toolbar" value
     /// Flag for title
     static member inline showTitle (value: bool) = Interop.mkOptionsAttr "showTitle" value
-    /// Flag for drag and drop headers
-    static member inline draggable (value: bool) = Interop.mkOptionsAttr "draggable" value
+    /// Flag to activate or disable sorting feature of table
+    static member inline sorting (value: bool) = Interop.mkOptionsAttr "sorting" value
+    /// Flag for third sort click
+    static member inline thirdSortClick (value: bool) = Interop.mkOptionsAttr "thirdSortClick" value
+    /// Flag for toolbar
+    static member inline toolbar (value: bool) = Interop.mkOptionsAttr "toolbar" value
 
 module options =
     /// Position of add row
@@ -117,6 +125,16 @@ module options =
     type loadingType =
         static member inline overlay = Interop.mkOptionsAttr "loadingType" "overlay"
         static member inline linear = Interop.mkOptionsAttr "loadingType" "linear"
+
+    /// Set overflow behavior.
+    [<Erase>]
+    type overflowY =
+        static member inline visible = Interop.mkOptionsAttr "overflowY" "visible"
+        static member inline hidden = Interop.mkOptionsAttr "overflowY" "hidden"
+        static member inline scroll = Interop.mkOptionsAttr "overflowY" "scroll"
+        static member inline auto = Interop.mkOptionsAttr "overflowY" "auto"
+        static member inline initial = Interop.mkOptionsAttr "overflowY" "initial"
+        static member inline inherit' = Interop.mkOptionsAttr "overflowY" "inherit"
 
     /// Detail panel visibility type.
     [<Erase>]

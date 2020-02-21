@@ -1,6 +1,5 @@
 ﻿namespace Feliz.MaterialUI.MaterialTable
 
-open Feliz
 open System.ComponentModel
 
 type IActionProperty = interface end
