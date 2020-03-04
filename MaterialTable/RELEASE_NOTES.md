@@ -1,3 +1,6 @@
+### 0.6.0 - Tuesday, March 3rd, 2020
+* Added more support for component overriding
+
 ### 0.5.0 - Thursday, Feburary 20, 2020
 * Updated bindings for material-table version 1.57.2
 

@@ -89,7 +89,7 @@ let private view = React.functionComponent (fun (input: {| model: Model; dispatc
             ]
         ]
         materialTable.components [
-            components.action (fun props ->
+            components.action<RowData> (fun props ->
                 let propAction =
                     match props.action with
                     | U2.Case1 singAction -> singAction
@@ -102,6 +102,19 @@ let private view = React.functionComponent (fun (input: {| model: Model; dispatc
                     prop.style [ style.textTransform.none ]
                     button.size.small
                     prop.text "Such custom!"
+                ]
+            )
+            components.toolbar (fun props ->
+                Html.div [
+                    prop.text "wow!"
+                    prop.children [
+                        Mui.typography [
+                            prop.text "Look ma, no hands!"
+                        ]
+                        Mui.mTableToolbar [
+                            yield! props.felizProps
+                        ]
+                    ]
                 ]
             )
         ]
