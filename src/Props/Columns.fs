@@ -14,7 +14,7 @@ type column =
     /// This field can be used for overriding filter and search algorithm
     static member inline customFilterAndSearch<'T> (handler: string -> 'T -> Bindings.Column<'T> -> bool) = Interop.mkColumnAttr "customFilterAndSearch" (Func<_,_,_,_> handler)
     /// This field can be used for overriding sort algorithm
-    static member inline customSort<'T> (handler: 'T -> 'T -> string -> int) = Interop.mkColumnAttr "customSort" (Func<_,_,_,_> handler)
+    static member inline customSort<'T> (handler: 'T -> 'T -> Bindings.ColumnType -> int) = Interop.mkColumnAttr "customSort" (Func<_,_,_,_> handler)
     /// Default Filter value for filtering column
     static member inline defaultFilter (value: obj) = Interop.mkColumnAttr "defaultFilter" value
     /// Default grouped column by order
