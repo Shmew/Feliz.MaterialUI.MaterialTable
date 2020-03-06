@@ -82,7 +82,7 @@ NUGET
     FSharp.Core (4.7)
 GITHUB
   remote: Zaid-Ajaj/Feliz
-    Feliz.Markdown/Markdown.fs (75132fdcaec96c526764eda83790e822790c827c)
+    Feliz.Markdown/Markdown.fs (0b66d1e54e5570903f876174f6269e103a1cecb2)
 GROUP FakeBuild
 NUGET
   remote: https://api.nuget.org/v3/index.json
@@ -252,7 +252,7 @@ NUGET
     FParsec (1.1.1) - restriction: || (>= net461) (>= netstandard2.0)
       FSharp.Core (>= 4.3.4) - restriction: || (>= net45) (>= netstandard2.0)
       System.ValueTuple (>= 4.4) - restriction: >= net45
-    FSharp.Compiler.Service (34.1) - restriction: || (>= net461) (>= netstandard2.0)
+    FSharp.Compiler.Service (34.1.1) - restriction: || (>= net461) (>= netstandard2.0)
       FSharp.Core (>= 4.6.2) - restriction: || (>= net461) (>= netstandard2.0)
       System.Buffers (>= 4.5) - restriction: || (>= net461) (>= netstandard2.0)
       System.Collections.Immutable (>= 1.5) - restriction: || (>= net461) (>= netstandard2.0)
@@ -271,10 +271,10 @@ NUGET
     FSharp.Core (4.7) - restriction: || (>= net461) (>= netstandard2.0)
     FSharp.Json (0.4)
       FSharp.Core (>= 4.6.2) - restriction: >= netstandard2.0
-    FSharpLint.Core (0.13.1)
+    FSharpLint.Core (0.13.3)
       Dotnet.ProjInfo (>= 0.31) - restriction: || (>= net461) (>= netstandard2.0)
       FParsec (>= 1.0.3) - restriction: || (>= net461) (>= netstandard2.0)
-      FSharp.Compiler.Service (>= 33.0) - restriction: || (>= net461) (>= netstandard2.0)
+      FSharp.Compiler.Service (>= 34.1) - restriction: || (>= net461) (>= netstandard2.0)
       FSharp.Core (>= 4.6.2) - restriction: || (>= net461) (>= netstandard2.0)
       Newtonsoft.Json (>= 12.0.2) - restriction: || (>= net461) (>= netstandard2.0)
     Microsoft.Build (16.4) - restriction: || (>= net462) (>= netstandard2.0)
@@ -997,6 +997,12 @@ NUGET
       Paket.Core (>= 5.241.2) - restriction: >= netstandard2.0
       System.Runtime.Loader (>= 4.3) - restriction: >= netstandard2.0
     FSharp.Core (4.7)
+    FSharpLint.Core (0.13.3)
+      Dotnet.ProjInfo (>= 0.31) - restriction: || (>= net461) (>= netstandard2.0)
+      FParsec (>= 1.0.3) - restriction: || (>= net461) (>= netstandard2.0)
+      FSharp.Compiler.Service (>= 34.1) - restriction: || (>= net461) (>= netstandard2.0)
+      FSharp.Core (>= 4.6.2) - restriction: || (>= net461) (>= netstandard2.0)
+      Newtonsoft.Json (>= 12.0.2) - restriction: || (>= net461) (>= netstandard2.0)
     Microsoft.DotNet.PlatformAbstractions (3.1.2) - restriction: >= netcoreapp2.0
     Microsoft.NETCore.App (2.2.8) - restriction: >= netcoreapp2.0
       Microsoft.NETCore.DotNetHostPolicy (>= 2.2.8) - restriction: >= netcoreapp2.2
@@ -1322,7 +1328,7 @@ NUGET
     FParsec (1.1.1) - restriction: || (>= net461) (>= netstandard2.0)
       FSharp.Core (>= 4.3.4) - restriction: || (>= net45) (>= netstandard2.0)
       System.ValueTuple (>= 4.4) - restriction: >= net45
-    FSharp.Compiler.Service (34.1) - restriction: || (>= net461) (>= netstandard2.0)
+    FSharp.Compiler.Service (34.1.1) - restriction: || (>= net461) (>= netstandard2.0)
       FSharp.Core (>= 4.6.2) - restriction: || (>= net461) (>= netstandard2.0)
       System.Buffers (>= 4.5) - restriction: || (>= net461) (>= netstandard2.0)
       System.Collections.Immutable (>= 1.5) - restriction: || (>= net461) (>= netstandard2.0)
@@ -1337,11 +1343,5 @@ NUGET
       System.ValueTuple (>= 4.4) - restriction: >= net461
     FSharp.Json (0.4)
       FSharp.Core (>= 4.6.2) - restriction: >= netstandard2.0
-    FSharpLint.Core (0.13.1)
-      Dotnet.ProjInfo (>= 0.31) - restriction: || (>= net461) (>= netstandard2.0)
-      FParsec (>= 1.0.3) - restriction: || (>= net461) (>= netstandard2.0)
-      FSharp.Compiler.Service (>= 33.0) - restriction: || (>= net461) (>= netstandard2.0)
-      FSharp.Core (>= 4.6.2) - restriction: || (>= net461) (>= netstandard2.0)
-      Newtonsoft.Json (>= 12.0.2) - restriction: || (>= net461) (>= netstandard2.0)
     System.Security.Cryptography.ProtectedData (4.7) - restriction: >= netcoreapp2.0
       System.Memory (>= 4.5.3) - restriction: && (< net46) (< netcoreapp2.1) (>= netstandard2.0) (< xamarinios) (< xamarinmac)

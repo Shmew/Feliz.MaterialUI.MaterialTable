@@ -1,27 +1,28 @@
 ﻿namespace Feliz.MaterialUI.MaterialTable
 
 open Fable.Core
+open Fable.Core.JsInterop
 open Feliz
 
 [<Erase>]
 type localization =
     /// Key value pair for localize body component
-    static member inline body (value: ILocalizationBodyProperty list) = Interop.mkLocalizationAttr "body" value
+    static member inline body (props: ILocalizationBodyProperty list) = Interop.mkLocalizationAttr "body" (createObj !!props)
     /// Key value pair for localize grouping component
-    static member inline grouping (value: ILocalizationGroupingProperty list) = Interop.mkLocalizationAttr "grouping" value
+    static member inline grouping (props: ILocalizationGroupingProperty list) = Interop.mkLocalizationAttr "grouping" (createObj !!props)
     /// Key value pair for localize header component
-    static member inline header (value: ILocalizationHeaderProperty list) = Interop.mkLocalizationAttr "header" value
+    static member inline header (props: ILocalizationHeaderProperty list) = Interop.mkLocalizationAttr "header" (createObj !!props)
     /// Key value pair for localize pagination component
-    static member inline pagination (value: ILocalizationPaginationProperty list) = Interop.mkLocalizationAttr "pagination" value
+    static member inline pagination (props: ILocalizationPaginationProperty list) = Interop.mkLocalizationAttr "pagination" (createObj !!props)
     /// Key value pair for localize toolbar component
-    static member inline toolbar (value: ILocalizationToolbarProperty list) = Interop.mkLocalizationAttr "pagination" value
+    static member inline toolbar (props: ILocalizationToolbarProperty list) = Interop.mkLocalizationAttr "pagination" (createObj !!props)
 
 module localization =
     [<Erase>]
     type body =
-        static member inline editRow (value: ILocalizationEditRowProperty list) = Interop.mkLocalizationBodyAttr "emptyDataSourceMessage" value
+        static member inline editRow (props: ILocalizationEditRowProperty list) = Interop.mkLocalizationBodyAttr "emptyDataSourceMessage" (createObj !!props)
         static member inline emptyDataSourceMessage (value: string) = Interop.mkLocalizationBodyAttr "emptyDataSourceMessage" value
-        static member inline filterRow (value: ILocalizationFilterRowProperty list) = Interop.mkLocalizationBodyAttr "emptyDataSourceMessage" value
+        static member inline filterRow (props: ILocalizationFilterRowProperty list) = Interop.mkLocalizationBodyAttr "emptyDataSourceMessage" (createObj !!props)
         static member inline addTooltip (value: string) = Interop.mkLocalizationBodyAttr "addTooltip" value
         static member inline deleteTooltip (value: string) = Interop.mkLocalizationBodyAttr "deleteTooltip" value
         static member inline editTooltip (value: string) = Interop.mkLocalizationBodyAttr "editTooltip" value

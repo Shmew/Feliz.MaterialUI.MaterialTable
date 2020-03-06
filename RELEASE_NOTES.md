@@ -1,3 +1,6 @@
+### 0.6.1 - Thursday, March 5th, 2020
+* Fix an issue with localization serialization
+
 ### 0.6.0 - Tuesday, March 3rd, 2020
 * Added more support for component overriding
 

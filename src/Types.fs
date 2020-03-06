@@ -24,6 +24,8 @@ type IOptionsProperty = interface end
 
 [<EditorBrowsable(EditorBrowsableState.Never)>]
 module Interop =
+    open Fable.Core.JsInterop
+
     let mkActionAttr (key: string) (value: obj) : IActionProperty = unbox (key, value)
     let mkColumnAttr (key: string) (value: obj) : IColumnProperty = unbox (key, value)
     let mkComponentsAttr (key: string) (value: obj) : IComponentsProperty = unbox (key, value)
