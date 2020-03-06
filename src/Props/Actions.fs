@@ -20,7 +20,7 @@ type action =
     /// Independent actions that will not on row' actions section
     static member inline isFreeAction (value: bool) = Interop.mkActionAttr "isFreeAction" value
     /// This event will be fired when button clicked. Parameters are event and row or rows
-    static member inline onClick<'T> (render: Browser.Types.Event -> 'T -> unit) = Interop.mkActionAttr "onClick" (Func<_,_,_> render)
+    static member inline onClick<'T> (render: Browser.Types.MouseEvent -> 'T -> unit) = Interop.mkActionAttr "onClick" (Func<_,_,_> render)
     /// Tooltip for button
     static member inline tooltip (value: string) = Interop.mkActionAttr "tooltip" value
 
