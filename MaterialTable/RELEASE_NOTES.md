@@ -1,3 +1,6 @@
+### 0.7.0 - Thursday, March 6th, 2020
+* Change action callback to proper browser event
+
 ### 0.6.1 - Thursday, March 5th, 2020
 * Fix an issue with localization serialization
 
