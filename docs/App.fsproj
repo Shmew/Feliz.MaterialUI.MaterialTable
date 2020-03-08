@@ -17,6 +17,7 @@
     <Compile Include="MaterialTable\Examples\Editable.fs" />
     <Compile Include="MaterialTable\Examples\Export.fs" />
     <Compile Include="MaterialTable\Examples\Filtering.fs" />
+    <Compile Include="MaterialTable\Examples\FixedColumns.fs" />
     <Compile Include="MaterialTable\Examples\Grouping.fs" />
     <Compile Include="MaterialTable\Examples\Localization.fs" />
     <Compile Include="MaterialTable\Examples\RemoteData.fs" />

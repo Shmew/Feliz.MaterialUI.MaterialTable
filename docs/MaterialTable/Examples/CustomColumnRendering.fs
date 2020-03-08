@@ -23,7 +23,7 @@ let render = React.functionComponent (fun () ->
             columns.column [
                 column.title "Avatar"
                 column.field "imageUrl"
-                column.render<RowData> (fun rowData ->
+                column.render<RowData> (fun rowData _ ->
                     Mui.avatar [
                         avatar.src rowData.imageUrl
                         prop.style [ 

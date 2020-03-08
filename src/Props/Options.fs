@@ -3,6 +3,14 @@
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
+open System
+
+[<Erase>]
+type fixedColumns =
+    /// Specify the number of left-most columns to fix in place
+    static member inline left (value: int) = Interop.mkFixedColumnAttr "left" value
+    /// Specify the number of right-most columns to fix in place
+    static member inline right (value: int) = Interop.mkFixedColumnAttr "right" value
 
 [<Erase>]
 type options =
@@ -18,6 +26,8 @@ type options =
     static member inline debounceInterval (value: float) = Interop.mkOptionsAttr "debounceInterval" value
     /// Flag for expanded items
     static member inline defaultExpanded (value: bool) = Interop.mkOptionsAttr "defaultExpanded" value
+    /// Handler to set flag for expanded items
+    static member inline defaultExpanded<'T> (handler: 'T -> bool) = Interop.mkOptionsAttr "defaultExpanded" handler
     /// Flag for double scroll bar for long tables
     static member inline doubleHorizontalScroll (value: bool) = Interop.mkOptionsAttr "doubleHorizontalScroll" value
     /// Flag for drag and drop headers
@@ -33,11 +43,17 @@ type options =
     /// Exported file name
     static member inline exportFileName (value: string) = Interop.mkOptionsAttr "exportFileName" value
     /// Function to create a custom CSV file
-    static member inline exportCsv (value: obj -> unit) = Interop.mkOptionsAttr "exportCsv" value
+    static member inline exportCsv<'Column,'RenderData> (handler: 'Column list -> 'RenderData list -> unit) = 
+        fun (cols: ResizeArray<'Column>) (renderData: ResizeArray<'RenderData>) ->
+            handler (List.ofSeq cols) (List.ofSeq renderData)
+        |> fun handler -> Func<_,_,_> handler
+        |> Interop.mkOptionsAttr "exportCsv"
     /// Flag for filtering row
     static member inline filtering (value: bool) = Interop.mkOptionsAttr "filtering" value
     /// Filter cell style for all filter cells
     static member inline filterCellStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "filterCellStyle" (createObj !!props)
+    /// Specify columns that are fixed in place regardless of table width via left and right column counts
+    static member inline fixedColumns (props: IFixedColumnProperty list) = Interop.mkOptionsAttr "fixedColumns" (createObj !!props)
     /// Flag for groupbar visibility
     static member inline grouping (value: bool) = Interop.mkOptionsAttr "grouping" value
     /// Flag for header visibility
@@ -46,15 +62,15 @@ type options =
     static member inline headerStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "headerStyle" (createObj !!props)
     /// Flag for hiding filter icons
     static member inline hideFilterIcons (value: bool) = Interop.mkOptionsAttr "hideFilterIcons" value
-    /// Max body height
+    /// Max body height in px
     static member inline maxBodyHeight (value: int) = Interop.mkOptionsAttr "maxBodyHeight" value
-    /// Max body height
+    /// Max body height in px
     static member inline maxBodyHeight (value: float) = Interop.mkOptionsAttr "maxBodyHeight" value
     /// Max body height
     static member inline maxBodyHeight (value: Feliz.Styles.ICssUnit) = Interop.mkOptionsAttr "maxBodyHeight" value
-    /// Min body height
+    /// Min body height in px
     static member inline minBodyHeight (value: int) = Interop.mkOptionsAttr "minBodyHeight" value
-    /// Min body height
+    /// Min body height in px
     static member inline minBodyHeight (value: float) = Interop.mkOptionsAttr "minBodyHeight" value
     /// Min body height
     static member inline minBodyHeight (value: Feliz.Styles.ICssUnit) = Interop.mkOptionsAttr "minBodyHeight" value
@@ -70,8 +86,17 @@ type options =
     static member inline pageSizeOptions (value: int list) = Interop.mkOptionsAttr "pageSizeOptions" (value |> ResizeArray)
     /// Page size options that could be selected by user
     static member inline pageSizeOptions (value: int seq) = Interop.mkOptionsAttr "pageSizeOptions" (value |> ResizeArray)
-    /// Css style to be applied rows
+    /// Css style to be applied to table rows
     static member inline rowStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "rowStyle" (createObj !!props)
+    /// Css style to be applied to table rows
+    ///
+    /// Takes a handler of row data, index, and level respectively
+    static member inline rowStyle<'T> (handler: 'T -> int -> int -> IStyleAttribute list) =
+        fun rowData index level -> 
+            handler rowData index level 
+            |> (fun styles -> createObj !!styles)
+        |> fun res -> Func<_,_,_,_> res
+        |> Interop.mkOptionsAttr "rowStyle" 
     /// Flag for showing message if there is no data in table
     static member inline showEmptyDataSourceMessage (value: bool) = Interop.mkOptionsAttr "showEmptyDataSourceMessage" value
     /// Flag for search feature
@@ -83,9 +108,10 @@ type options =
     /// Flag for selection feature
     static member inline selection (value: bool) = Interop.mkOptionsAttr "selection" value
     /// Selection checkbox props
-    static member inline selectionProps<'T> (value: 'T option) = Interop.mkOptionsAttr "selectionProps" value
+    static member inline selectionProps (props: IReactProperty list) = Interop.mkOptionsAttr "selectionProps" (createObj !!props)
     /// Selection checkbox props
-    static member inline selectionProps<'T> (value: 'T option -> 'T option) = Interop.mkOptionsAttr "selectionProps" value
+    static member inline selectionProps<'T> (handler: 'T -> IReactProperty list) = 
+        Interop.mkOptionsAttr "selectionProps" (Func<_,_> (handler >> (fun props -> createObj !!props))) 
     /// Flag for showing first and last page buttons on pagination component
     static member inline showFirstLastPageButtons (value: bool) = Interop.mkOptionsAttr "showFirstLastPageButtons" value
     /// Flag for showing select all checkbox
@@ -96,6 +122,8 @@ type options =
     static member inline showTitle (value: bool) = Interop.mkOptionsAttr "showTitle" value
     /// Flag to activate or disable sorting feature of table
     static member inline sorting (value: bool) = Interop.mkOptionsAttr "sorting" value
+    /// Could be used to pass ref over withStyles
+    static member inline tableRef (ref': Fable.React.IRefValue<'T>) = Interop.mkOptionsAttr "tableRef" ref'
     /// Flag for third sort click
     static member inline thirdSortClick (value: bool) = Interop.mkOptionsAttr "thirdSortClick" value
     /// Flag for toolbar
@@ -117,24 +145,24 @@ module options =
     /// Detail panel visibility type.
     [<Erase>]
     type detailPanelType =
-        static member inline single = Interop.mkOptionsAttr "detailPanelType" "single"
         static member inline multiple = Interop.mkOptionsAttr "detailPanelType" "multiple"
+        static member inline single = Interop.mkOptionsAttr "detailPanelType" "single"
 
     /// Detail panel visibility type.
     [<Erase>]
     type loadingType =
-        static member inline overlay = Interop.mkOptionsAttr "loadingType" "overlay"
         static member inline linear = Interop.mkOptionsAttr "loadingType" "linear"
+        static member inline overlay = Interop.mkOptionsAttr "loadingType" "overlay"
 
     /// Set overflow behavior.
     [<Erase>]
     type overflowY =
-        static member inline visible = Interop.mkOptionsAttr "overflowY" "visible"
-        static member inline hidden = Interop.mkOptionsAttr "overflowY" "hidden"
-        static member inline scroll = Interop.mkOptionsAttr "overflowY" "scroll"
         static member inline auto = Interop.mkOptionsAttr "overflowY" "auto"
-        static member inline initial = Interop.mkOptionsAttr "overflowY" "initial"
+        static member inline hidden = Interop.mkOptionsAttr "overflowY" "hidden"
         static member inline inherit' = Interop.mkOptionsAttr "overflowY" "inherit"
+        static member inline initial = Interop.mkOptionsAttr "overflowY" "initial"
+        static member inline scroll = Interop.mkOptionsAttr "overflowY" "scroll"
+        static member inline visible = Interop.mkOptionsAttr "overflowY" "visible"
 
     /// Detail panel visibility type.
     [<Erase>]
@@ -153,6 +181,14 @@ module options =
     type searchFieldAlignment =
         static member inline left = Interop.mkOptionsAttr "searchFieldAlignment" "left"
         static member inline right = Interop.mkOptionsAttr "searchFieldAlignment" "right"
+
+    /// Specify if columns should use a width algorithm or be fixed in place
+    [<Erase>]
+    type tableLayout =
+        /// Make the table layout use a width-algorithm
+        static member inline auto = Interop.mkOptionsAttr "tableLayout" "auto"
+        /// Make the table layout use a fixed width
+        static member inline fixed' = Interop.mkOptionsAttr "tableLayout" "fixed"
 
     /// Flag for pagination type
     [<Erase>]

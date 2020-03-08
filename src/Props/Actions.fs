@@ -24,6 +24,15 @@ type action =
     /// Tooltip for button
     static member inline tooltip (value: string) = Interop.mkActionAttr "tooltip" value
 
+module action =
+    /// Sets the position of the action
+    [<Erase>]
+    type position =
+        static member inline auto = Interop.mkActionAttr "position" "auto"
+        static member inline toolbar = Interop.mkActionAttr "position" "toolbar"
+        static member inline toolbarOnSelect = Interop.mkActionAttr "position" "toolbarOnSelect"
+        static member inline row = Interop.mkActionAttr "position" "row"
+
 [<Erase>]
 type actions =
     static member inline action (props: IActionProperty list) = unbox (createObj !!props) : IActionsProperty

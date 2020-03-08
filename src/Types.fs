@@ -11,6 +11,7 @@ type ICurrencySettingProperty = interface end
 type IDetailPanelProperty = interface end
 type IDetailPanelsProperty = interface end
 type IEditableProperty = interface end
+type IFixedColumnProperty = interface end
 type ILocalizationProperty = interface end
 type ILocalizationBodyProperty = interface end
 type ILocalizationEditRowProperty = interface end
@@ -24,14 +25,13 @@ type IOptionsProperty = interface end
 
 [<EditorBrowsable(EditorBrowsableState.Never)>]
 module Interop =
-    open Fable.Core.JsInterop
-
     let mkActionAttr (key: string) (value: obj) : IActionProperty = unbox (key, value)
     let mkColumnAttr (key: string) (value: obj) : IColumnProperty = unbox (key, value)
     let mkComponentsAttr (key: string) (value: obj) : IComponentsProperty = unbox (key, value)
     let mkCurrencySettingAttr (key: string) (value: obj) : ICurrencySettingProperty = unbox (key, value)
     let mkDetailPanelAttr (key: string) (value: obj) : IDetailPanelProperty = unbox (key, value)
     let mkEditableAttr (key: string) (value: obj) : IEditableProperty = unbox (key, value)
+    let mkFixedColumnAttr (key: string) (value: obj) : IFixedColumnProperty = unbox (key, value)
     let mkLocalizationAttr (key: string) (value: obj) : ILocalizationProperty = unbox (key, value)
     let mkLocalizationBodyAttr (key: string) (value: obj) : ILocalizationBodyProperty = unbox (key, value)
     let mkLocalizationEditRowAttr (key: string) (value: obj) : ILocalizationEditRowProperty = unbox (key, value)

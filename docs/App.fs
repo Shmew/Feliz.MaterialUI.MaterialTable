@@ -63,6 +63,16 @@ module AppTheme =
                 style.backgroundColor "#303030 !important"
             else style.backgroundColor (defaultTheme.palette.background.``default`` + "!important")
         ]
+        theme.overrides.muiTableCell.root [
+            if isDark appTheme.PaletteType then
+                style.backgroundColor "#303030 !important"
+            else style.backgroundColor (defaultTheme.palette.background.``default`` + "!important")
+        ]
+        theme.overrides.muiTable.root [
+            if isDark appTheme.PaletteType then
+                style.backgroundColor "#303030 !important"
+            else style.backgroundColor (defaultTheme.palette.background.``default`` + "!important")
+        ]
     ])
 
     let getTheme b =
@@ -220,6 +230,7 @@ let samples =
       "materialtable-editable", Samples.Editable.render()
       "materialtable-export", Samples.Export.render()
       "materialtable-filtering", Samples.Filtering.render()
+      "materialtable-fixedcolumns", Samples.FixedColumns.render()
       "materialtable-grouping", Samples.Grouping.render()
       "materialtable-localization", Samples.Localization.render()
       "materialtable-remotedata", Samples.RemoteData.render()
@@ -455,6 +466,7 @@ let sidebar (model: Model) =
             nestedMenuItem "Editable Rows" [ Urls.Editable ]
             nestedMenuItem "Exporting Data" [ Urls.Export ]
             nestedMenuItem "Filtering" [ Urls.Filtering ]
+            nestedMenuItem "Fixed Columns" [ Urls.FixedColumns ]
             nestedMenuItem "Grouping" [ Urls.Grouping ]
             nestedMenuItem "Localization" [ Urls.Localization ]
             nestedMenuItem "Remote Data" [ Urls.RemoteData ]
@@ -480,6 +492,7 @@ let content model =
     | [ Urls.MaterialTable; Urls.Examples; Urls.Editable ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Editable.md" ]
     | [ Urls.MaterialTable; Urls.Examples; Urls.Export ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Export.md" ]
     | [ Urls.MaterialTable; Urls.Examples; Urls.Filtering ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Filtering.md" ]
+    | [ Urls.MaterialTable; Urls.Examples; Urls.FixedColumns ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "FixedColumns.md" ]
     | [ Urls.MaterialTable; Urls.Examples; Urls.Grouping ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Grouping.md" ]
     | [ Urls.MaterialTable; Urls.Examples; Urls.Localization ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "Localization.md" ]
     | [ Urls.MaterialTable; Urls.Examples; Urls.RemoteData ] -> lazyView loadMarkdown [ "MaterialTable"; "Examples"; "RemoteData.md" ]

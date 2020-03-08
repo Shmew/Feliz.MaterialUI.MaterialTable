@@ -1,6 +1,5 @@
 ﻿namespace Feliz.MaterialUI.MaterialTable
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
@@ -73,10 +72,8 @@ type materialTable =
     /// Func that makes table parent-child table
     static member inline parentChildData<'T> (handler: 'T -> 'T [] -> 'T option) = 
         Interop.mkAttr "parentChildData" (Func<_,_,_> (fun (row: 'T) (rows: ResizeArray<'T>) -> rows |> Array.ofSeq |> handler row))
-    /// Could be use to pass ref over withStyles
-    static member inline tableRef (handler: Element -> unit) = Interop.mkAttr "tableRef" handler
-    /// Could be use to pass ref over withStyles
-    static member inline tableRef<'T> (ref: Fable.React.IRefValue<Bindings.MaterialTableProps<'T> option>) = Interop.mkAttr "tableRef" ref
+    /// Style would be applied to Container of table
+    static member inline style (styles: #IStyleAttribute list) = Interop.mkAttr "style" (createObj !!styles)
     /// Table Title (only render if toolbar option is true)
     static member inline title (value: ReactElement) = Interop.mkAttr "title" value
     /// Table Title (only render if toolbar option is true)
