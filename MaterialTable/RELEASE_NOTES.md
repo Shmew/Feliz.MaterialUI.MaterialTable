@@ -1,3 +1,7 @@
+### 0.8.0 - Sunday, March 8th, 2020
+* Added support for additional features
+* Fixed some function signatures that were incorrect
+
 ### 0.7.0 - Thursday, March 6th, 2020
 * Change action callback to proper browser event
 
