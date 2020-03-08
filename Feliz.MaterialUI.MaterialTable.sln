@@ -69,6 +69,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{AB
 		public\MaterialTable\Examples\Editable.md = public\MaterialTable\Examples\Editable.md
 		public\MaterialTable\Examples\Export.md = public\MaterialTable\Examples\Export.md
 		public\MaterialTable\Examples\Filtering.md = public\MaterialTable\Examples\Filtering.md
+		public\MaterialTable\Examples\FixedColumns.md = public\MaterialTable\Examples\FixedColumns.md
 		public\MaterialTable\Examples\Grouping.md = public\MaterialTable\Examples\Grouping.md
 		public\MaterialTable\Examples\Localization.md = public\MaterialTable\Examples\Localization.md
 		public\MaterialTable\Examples\RemoteData.md = public\MaterialTable\Examples\RemoteData.md
