@@ -8,7 +8,6 @@ module Samples.Styling
 
 open Fable.Core.Experimental
 open Feliz
-open Feliz.MaterialUI
 open Feliz.MaterialUI.MaterialTable
 
 type private RowData =
@@ -18,21 +17,14 @@ type private RowData =
       birthCity: int }
 
 let render = React.functionComponent (fun () ->
-    let theme = Styles.useTheme()
-
     Mui.materialTable [
-        prop.style [ style.backgroundColor theme.palette.background.``default`` ]
         materialTable.title "Styling Preview"
         materialTable.columns [
             columns.column [
                 column.title "Name"
                 column.field<RowData> (fun rd -> nameof rd.name)
                 column.cellStyle [
-                    style.backgroundColor "#039BE5"
-                    style.color "#FFF"
-                ]
-                column.headerStyle [
-                    style.backgroundColor "#039BE5"
+                    style.color "#03DAC6"
                 ]
             ]
             columns.column [
@@ -65,8 +57,7 @@ let render = React.functionComponent (fun () ->
         ]
         materialTable.options [
             options.headerStyle [
-                style.backgroundColor "#01579b"
-                style.color "#FFF"
+                style.color "#03DAC6"
             ]
         ]
     ])
