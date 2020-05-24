@@ -1,3 +1,6 @@
+### 1.0.0 - Saturday, May 23rd, 2020
+* Stable release
+
 ### 0.8.0 - Sunday, March 8th, 2020
 * Added support for additional features
 * Fixed some function signatures that were incorrect
