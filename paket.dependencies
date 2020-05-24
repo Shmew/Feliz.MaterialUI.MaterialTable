@@ -6,28 +6,28 @@ group MaterialTable
 	source https://nuget.org/api/v2
 	source https://api.nuget.org/v3/index.json
 
-    nuget Fable.Core ~> 3.1
-    nuget Fable.Promise ~> 2.0
-    nuget Feliz ~> 0.68
-    nuget Feliz.MaterialUI ~> 0.8
+    nuget Fable.Core ~> 3
+    nuget Fable.Promise ~> 2
+    nuget Feliz ~> 1
+    nuget Feliz.MaterialUI ~> 1
     nuget FSharp.Core ~> 4.7
 
 group Docs
     source https://nuget.org/api/v2
 	source https://api.nuget.org/v3/index.json
 
-    nuget Elmish.SweetAlert ~> 3.2
-    nuget Fable.Core ~> 3.1
-    nuget Fable.Elmish.React ~> 3.0
-    nuget Fable.MaterialUI.Icons ~> 1.1
-    nuget Fable.MaterialUI.MaterialDesignIcons ~> 1.2
-    nuget Fable.Promise ~> 2.0
-    nuget Fable.SimpleHttp ~> 2.6
-    nuget Fable.SimpleJson ~> 3.7
-    nuget Feliz ~> 0.66
-    nuget Feliz.ElmishComponents ~> 0.2
-    nuget Feliz.MaterialUI ~> 0.8
-    nuget Feliz.Router ~> 1.4
+    nuget Elmish.SweetAlert ~> 3
+    nuget Fable.Core ~> 3
+    nuget Fable.Elmish.React ~> 3
+    nuget Fable.MaterialUI.Icons ~> 1
+    nuget Fable.MaterialUI.MaterialDesignIcons ~> 1
+    nuget Fable.Promise ~> 2
+    nuget Fable.SimpleHttp ~> 2
+    nuget Fable.SimpleJson ~> 3
+    nuget Feliz ~> 1
+    nuget Feliz.ElmishComponents ~> 0
+    nuget Feliz.MaterialUI ~> 1
+    nuget Feliz.Router ~> 1
     nuget FSharp.Core ~> 4.7
 
     github Zaid-Ajaj/Feliz Feliz.Markdown/Markdown.fs
@@ -38,11 +38,11 @@ group Tooling
 
 	nuget Fake.IO.FileSystem ~> 5
 	nuget FSharp.Core ~> 4.7
-    nuget FSharp.Json ~> 0.3
-	nuget FSharpLint.Core ~> 0.12
-    nuget Yarnpkg.Yarn ~> 1.15
+    nuget FSharp.Json ~> 0
+	nuget FSharpLint.Core ~> 0
+    nuget Yarnpkg.Yarn ~> 1
 
-	clitool dotnet-fable ~> 2.0
+	clitool dotnet-fable ~> 2
 	clitool dotnet-fake ~> 5
 
 group FakeBuild
@@ -59,6 +59,6 @@ group FakeBuild
     nuget Fake.JavaScript.Yarn ~> 5
 	nuget Fake.JavaScript.Npm ~> 5
 	nuget Fake.Tools.Git ~> 5
-    nuget FSharp.Json ~> 0.3
-	nuget FSharpLint.Core ~> 0.12
-	nuget Fantomas ~> 3.0.0
+    nuget FSharp.Json ~> 0
+	nuget FSharpLint.Core ~> 0
+	nuget Fantomas ~> 3

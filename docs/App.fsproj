@@ -1,14 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-  <ItemGroup>
-    <EmbeddedResource Remove="MaterialTable\Examples\Additional\**" />
-    <EmbeddedResource Remove="MaterialTable\Examples\DateTime\**" />
-    <EmbeddedResource Remove="MaterialTable\Examples\Date\**" />
-    <EmbeddedResource Remove="MaterialTable\Examples\Time\**" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="MaterialTable\Examples\Actions.fs" />
     <Compile Include="MaterialTable\Examples\ComponentOverriding.fs" />
