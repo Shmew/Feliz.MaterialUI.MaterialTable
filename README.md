@@ -1,4 +1,4 @@
-﻿# Feliz.MaterialUI.MaterialTable (alpha) [![Nuget](https://img.shields.io/nuget/v/Feliz.MaterialUI.MaterialTable.svg?maxAge=0&colorB=brightgreen)](https://www.nuget.org/packages/Feliz.MaterialUI.MaterialTable)
+﻿# Feliz.MaterialUI.MaterialTable [![Nuget](https://img.shields.io/nuget/v/Feliz.MaterialUI.MaterialTable.svg?maxAge=0&colorB=brightgreen)](https://www.nuget.org/packages/Feliz.MaterialUI.MaterialTable)
 
 Fable bindings for [material-table](https://github.com/mbrn/material-table) with [Feliz](https://github.com/Zaid-Ajaj/Feliz) style api for use within MaterialUI.
 
