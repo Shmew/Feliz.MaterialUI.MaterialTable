@@ -20,6 +20,8 @@ type options =
     static member inline actionsColumnIndex (value: int) = Interop.mkOptionsAttr "actionsColumnIndex" value
     /// Flag for columns button that controls which column could be rendered
     static member inline columnsButton (value: bool) = Interop.mkOptionsAttr "columnsButton" value
+    /// cspNonce for react-beautiful-dnd context
+    static member inline cspNonce (value: string) = Interop.mkOptionsAttr "cspNonce" value
     /// Debounce interval for search and filter
     static member inline debounceInterval (value: int) = Interop.mkOptionsAttr "debounceInterval" value
     /// Debounce interval for search and filter
@@ -101,6 +103,8 @@ type options =
     static member inline showEmptyDataSourceMessage (value: bool) = Interop.mkOptionsAttr "showEmptyDataSourceMessage" value
     /// Flag for search feature
     static member inline search (value: bool) = Interop.mkOptionsAttr "search" value
+    /// Initialize search field focused
+    static member inline searchAutoFocus (value: bool) = Interop.mkOptionsAttr "searchAutoFocus" value
     /// Search field css style
     static member inline searchFieldStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "searchFieldStyle" (createObj !!props)
     /// Set the search text
@@ -170,17 +174,21 @@ module options =
         static member inline default' = Interop.mkOptionsAttr "padding" "default"
         static member inline dense = Interop.mkOptionsAttr "padding" "dense"
 
-    /// Flag for pagination type
     [<Erase>]
     type paginationType =
         static member inline normal = Interop.mkOptionsAttr "paginationType" "normal"
         static member inline stepped = Interop.mkOptionsAttr "paginationType" "stepped"
 
-    /// Flag for pagination type
     [<Erase>]
     type searchFieldAlignment =
         static member inline left = Interop.mkOptionsAttr "searchFieldAlignment" "left"
         static member inline right = Interop.mkOptionsAttr "searchFieldAlignment" "right"
+
+    [<Erase>]
+    type searchFieldVariant =
+        static member inline filled = Interop.mkOptionsAttr "searchFieldVariant" "filled"
+        static member inline outlined = Interop.mkOptionsAttr "searchFieldVariant" "outlined"
+        static member inline standard = Interop.mkOptionsAttr "searchFieldVariant" "standard"
 
     /// Specify if columns should use a width algorithm or be fixed in place
     [<Erase>]

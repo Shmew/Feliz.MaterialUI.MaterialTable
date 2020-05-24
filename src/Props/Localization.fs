@@ -36,6 +36,7 @@ module localization =
 
         [<Erase>]
         type filterRow =
+            static member inline filterPlaceHolder (value: string) = Interop.mkLocalizationFilterRowAttr "filterPlaceHolder" value
             static member inline filterTooltip (value: string) = Interop.mkLocalizationFilterRowAttr "filterTooltip" value
     
     [<Erase>]
