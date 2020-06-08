@@ -54,4 +54,4 @@ let render = React.functionComponent (fun () ->
     ])
 ```
 
-Feliz.MaterialUI.MaterialTable has documentation at [Feliz.MaterialUI.MaterialTable](https://shmew.github.io/Feliz.MaterialUI.MaterialTable/) with live examples along side code samples.
+Find documentation [here](https://shmew.github.io/Feliz.MaterialUI.MaterialTable/) with live examples.
