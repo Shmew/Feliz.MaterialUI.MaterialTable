@@ -8,7 +8,7 @@ open System.Runtime.CompilerServices
 [<assembly: AssemblyDescriptionAttribute("Fable bindings written in the Feliz-style for material-table")>]
 [<assembly: AssemblyVersionAttribute("1.1.0")>]
 [<assembly: AssemblyFileVersionAttribute("1.1.0")>]
-[<assembly: AssemblyConfigurationAttribute("Release")>]
+[<assembly: AssemblyConfigurationAttribute("Debug")>]
 [<assembly: InternalsVisibleToAttribute("Feliz.MaterialUI.MaterialTable.Tests")>]
 do ()
 
@@ -18,5 +18,5 @@ module internal AssemblyVersionInformation =
     let [<Literal>] AssemblyDescription = "Fable bindings written in the Feliz-style for material-table"
     let [<Literal>] AssemblyVersion = "1.1.0"
     let [<Literal>] AssemblyFileVersion = "1.1.0"
-    let [<Literal>] AssemblyConfiguration = "Release"
+    let [<Literal>] AssemblyConfiguration = "Debug"
     let [<Literal>] InternalsVisibleTo = "Feliz.MaterialUI.MaterialTable.Tests"

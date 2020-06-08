@@ -64,27 +64,24 @@ let render = React.functionComponent (fun () ->
         materialTable.data state
         materialTable.editable [
             editable.onRowAdd<RowData> (fun newData ->
-                Promise.create (fun res reject ->
+                promise {
                     state @ [ newData ]
                     |> setState
-                    res()
-                )
+                }
             )
             editable.onRowUpdate<RowData> (fun newData oldData ->
-                Promise.create (fun res reject ->
+                promise {
                     state 
                     |> List.map (fun d -> if d = oldData then newData else d)
                     |> setState
-                    res()
-                )
+                }
             )
             editable.onRowDelete<RowData> (fun oldData ->
-                Promise.create (fun res reject ->
+                promise {
                     state
                     |> List.filter (fun d -> d <> oldData)
                     |> setState
-                    res()
-                )
+                }
             )
         ]
     ])
