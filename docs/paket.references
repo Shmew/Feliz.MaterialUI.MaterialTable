@@ -9,8 +9,7 @@ group Docs
     Fable.SimpleJson
     Feliz
     Feliz.ElmishComponents
+    Feliz.Markdown
     Feliz.MaterialUI
     Feliz.Router
     FSharp.Core
-
-    File: Markdown.fs Feliz.Markdown

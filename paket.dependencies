@@ -26,11 +26,10 @@ group Docs
     nuget Fable.SimpleJson ~> 3
     nuget Feliz ~> 1
     nuget Feliz.ElmishComponents ~> 0
+    nuget Feliz.Markdown ~> 1
     nuget Feliz.MaterialUI ~> 1
     nuget Feliz.Router ~> 1
     nuget FSharp.Core ~> 4.7 lowest_matching: true
-
-    github Zaid-Ajaj/Feliz Feliz.Markdown/Markdown.fs
 
 group Tooling
 	source https://nuget.org/api/v2

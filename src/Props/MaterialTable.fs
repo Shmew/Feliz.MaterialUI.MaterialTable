@@ -28,6 +28,9 @@ type materialTable =
     static member inline data<'T> (handler: Bindings.Query<'T> -> JS.Promise<QueryResult<'T>>) = 
         Interop.mkAttr "data" (fun query -> handler query |> QueryResult.mapPromiseToNative)
 
+    /// Delete tooltip handler
+    static member inline deleteTooltip<'T> (handler: 'T -> string) = Interop.mkAttr "deleteTooltip" handler
+
     /// Component(s) to be rendered on detail panel
     static member inline detailPanels (prop: IDetailPanelsProperty) = Interop.mkAttr "detailPanel" (prop |> Array.singleton |> ResizeArray)
     /// Component(s) to be rendered on detail panel
@@ -37,6 +40,9 @@ type materialTable =
 
     /// Object for add, update and delete functions
     static member inline editable (props: IEditableProperty list) = Interop.mkAttr "editable" (createObj !!props)
+
+    /// Edit tooltip handler
+    static member inline editTooltip<'T> (handler: 'T -> string) = Interop.mkAttr "editTooltip" handler
 
     /// Icons customization
     static member inline icons (prop: IIconsProperty) = Interop.mkAttr "icons" (createObj !![ prop ])

@@ -65,6 +65,7 @@ module localization =
     type toolbar =
         static member inline addRemoveColumns (value: string) = Interop.mkLocalizationToolbarAttr "addRemoveColumns" value
         static member inline nRowsSelected (value: string) = Interop.mkLocalizationToolbarAttr "nRowsSelected" value
+        static member inline nRowsSelected (rowsSelectedHandler: int -> string) = Interop.mkLocalizationToolbarAttr "nRowsSelected" rowsSelectedHandler
         static member inline showColumnsTitle (value: string) = Interop.mkLocalizationToolbarAttr "showColumnsTitle" value
         static member inline showColumnsAriaLabel (value: string) = Interop.mkLocalizationToolbarAttr "showColumnsAriaLabel" value
         static member inline exportTitle (value: string) = Interop.mkLocalizationToolbarAttr "exportTitle" value

@@ -19,10 +19,6 @@
     <Compile Include="MaterialTable\Examples\Styling.fs" />
     <Compile Include="MaterialTable\Examples\TreeData.fs" />
     <None Include="main.scss" />
-    <Compile Include="..\paket-files\docs\Zaid-Ajaj\Feliz\Feliz.Markdown\Markdown.fs">
-      <Paket>True</Paket>
-      <Link>Feliz.Markdown/Markdown.fs</Link>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Urls.fs" />

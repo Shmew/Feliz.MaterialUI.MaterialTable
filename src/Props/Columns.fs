@@ -17,7 +17,7 @@ type column =
         |> fun handler -> Func<_,_,_> handler
         |> Interop.mkColumnAttr "cellStyle"
 
-    /// This field can be used when column type is currency.
+    /// This field can be used when column type is currency
     static member inline currencySetting (props: ICurrencySettingProperty list) = 
         Interop.mkColumnAttr "currencySetting" (createObj !!props)
 
@@ -34,6 +34,9 @@ type column =
 
     /// Default grouped column by order
     static member inline defaultGroupOrder (value: int) = Interop.mkColumnAttr "defaultGroupOrder" value
+
+    /// Sets the date locale
+    static member inline dateSetting (locale: string) = Interop.mkColumnAttr "dateSetting" (createObj !![ "locale" ==> locale ])
 
     /// Disable the 'onRowClick' event for this cell
     static member inline disableClick (value: bool) = Interop.mkColumnAttr "disableClick" value
