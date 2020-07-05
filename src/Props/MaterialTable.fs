@@ -57,8 +57,8 @@ type materialTable =
     /// All text for localization
     static member inline localization (props: ILocalizationProperty list) = Interop.mkAttr "localization" (createObj !!props)
 
-    /// To handle page changes (page)
-    static member inline onChangePage (handler: int -> unit) = Interop.mkAttr "onChangePage" handler
+    /// To handle page changes (page, pageSize)
+    static member inline onChangePage (handler: int -> int -> unit) = Interop.mkAttr "onChangePage" (Func<_,_,_> handler)
 
     /// To handle rows per page changes (pageSize)
     static member inline onChangeRowsPerPage (handler: int -> unit) = Interop.mkAttr "onChangeRowsPerPage" handler

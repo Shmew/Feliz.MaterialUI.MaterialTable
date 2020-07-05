@@ -36,11 +36,17 @@ type options =
     /// Handler to set flag for expanded items
     static member inline defaultExpanded<'T> (handler: 'T -> bool) = Interop.mkOptionsAttr "defaultExpanded" handler
 
+    /// Detail panel column style
+    static member inline detailPanelColumnStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "detailPanelColumnStyle" (createObj !!props)
+
     /// Flag for double scroll bar for long tables
     static member inline doubleHorizontalScroll (value: bool) = Interop.mkOptionsAttr "doubleHorizontalScroll" value
 
     /// Flag for drag and drop headers
     static member inline draggable (value: bool) = Interop.mkOptionsAttr "draggable" value
+
+    /// Edit cell style
+    static member inline editCellStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "editCellStyle" (createObj !!props)
 
     /// Flag for rendering rows to complete page size
     static member inline emptyRowsWhenPaging (value: bool) = Interop.mkOptionsAttr "emptyRowsWhenPaging" value
@@ -64,11 +70,21 @@ type options =
         |> fun handler -> Func<_,_,_> handler
         |> Interop.mkOptionsAttr "exportCsv"
 
+    /// Function to create a custom PDF file
+    static member inline exportPdf<'Column,'RenderData> (handler: 'Column list -> 'RenderData list -> unit) = 
+        fun (cols: ResizeArray<'Column>) (renderData: ResizeArray<'RenderData>) ->
+            handler (List.ofSeq cols) (List.ofSeq renderData)
+        |> fun handler -> Func<_,_,_> handler
+        |> Interop.mkOptionsAttr "exportPdf"
+
     /// Flag for filtering row
     static member inline filtering (value: bool) = Interop.mkOptionsAttr "filtering" value
 
     /// Filter cell style for all filter cells
     static member inline filterCellStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "filterCellStyle" (createObj !!props)
+
+    /// Filter cell style for all filter cells
+    static member inline filterRowStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "filterRowStyle" (createObj !!props)
 
     /// Specify columns that are fixed in place regardless of table width via left and right column counts
     static member inline fixedColumns (props: IFixedColumnProperty list) = Interop.mkOptionsAttr "fixedColumns" (createObj !!props)

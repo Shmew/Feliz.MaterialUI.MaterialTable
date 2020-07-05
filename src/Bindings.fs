@@ -1,25 +1,32 @@
 namespace Feliz.MaterialUI.MaterialTable
 
 open Fable.Core
-open Fable.Core.JsInterop
 
 module Bindings =
     open Feliz
     open Feliz.MaterialUI
-        
-    [<StringEnum>]
+
+    [<StringEnum;RequireQualifiedAccess>]
     type OrderDirection =
         | Asc
         | Desc
 
-    [<StringEnum>]
+    [<StringEnum;RequireQualifiedAccess>]
+    type ColumnAlign =
+        | Center
+        | Inherit
+        | Justify
+        | Left
+        | Right
+
+    [<StringEnum;RequireQualifiedAccess>]
     type ColumnEditable =
         | Always
         | Never
         | OnAdd
         | OnUpdate
 
-    [<StringEnum>]
+    [<StringEnum;RequireQualifiedAccess>]
     type ColumnFieldType =
         | Boolean
         | Currency
@@ -29,73 +36,76 @@ module Bindings =
         | String
         | Time
 
-    [<StringEnum>]
+    [<StringEnum;RequireQualifiedAccess>]
     type ColumnType =
         | Group
         | Row
 
     [<AllowNullLiteral>] 
     type CurrencySetting =
-        abstract locale: string option with get, set
-        abstract currencyCode: string option with get, set
-        abstract minimumFractionDigits: int option with get, set
-        abstract maximumFractionDigits: int option with get, set
+        abstract locale: string option
+        abstract currencyCode: string option
+        abstract minimumFractionDigits: int option
+        abstract maximumFractionDigits: int option
 
     [<AllowNullLiteral>]
     type Column<'RowData> =
-        abstract cellStyle: U2<PropsObject, (ResizeArray<'RowData> -> 'RowData -> PropsObject)> option with get, set
-        abstract currencySetting: CurrencySetting option with get, set
-        abstract customFilterAndSearch: (string -> 'RowData -> Column<'RowData> -> bool) option with get, set
-        abstract customSort: ('RowData -> 'RowData -> ColumnType -> int) option with get, set
-        abstract defaultFilter: string option with get, set
-        abstract defaultGroupOrder: int option with get, set
-        abstract defaultGroupSort: OrderDirection option with get, set
-        abstract defaultSort: OrderDirection option with get, set
-        abstract disableClick: bool option with get, set
-        abstract editable: U2<ColumnEditable, (Column<'RowData> -> 'RowData -> bool)> option with get, set
-        abstract editComponent: ReactElement option with get, set
-        abstract emptyValue: U3<string, ReactElement, ('RowData -> U2<ReactElement, string>)> option with get, set
-        abstract export: bool option with get, set
-        abstract field: string option with get, set
-        abstract filtering: bool option with get, set
-        abstract filterCellStyle: PropsObject option with get, set
+        abstract align: ColumnAlign option
+        abstract cellStyle: U2<PropsObject, (ResizeArray<'RowData> -> 'RowData -> PropsObject)> option
+        abstract currencySetting: CurrencySetting option
+        abstract customFilterAndSearch: (string -> 'RowData -> Column<'RowData> -> bool) option
+        abstract customSort: ('RowData -> 'RowData -> ColumnType -> int) option
+        abstract defaultFilter: string option
+        abstract defaultGroupOrder: int option
+        abstract defaultGroupSort: OrderDirection option
+        abstract defaultSort: OrderDirection option
+        abstract disableClick: bool option
+        abstract editable: U2<ColumnEditable, (Column<'RowData> -> 'RowData -> bool)> option
+        abstract editComponent: ReactElement option
+        abstract editPlaceholder: string option
+        abstract emptyValue: U3<string, ReactElement, ('RowData -> U2<ReactElement, string>)> option
+        abstract export: bool option
+        abstract field: string option
+        abstract filtering: bool option
+        abstract filterCellStyle: PropsObject option
         abstract filterComponent: U2<ReactElement,Column<'RowData> -> (string -> 'Value -> unit)> option with get, set
-        abstract filterPlaceholder: string option with get, set
-        abstract grouping: bool option with get, set
-        abstract headerStyle: PropsObject option with get, set
-        abstract hidden: bool option with get, set
-        abstract hideFilterIcon: bool option with get, set
-        abstract initialEditValue: 'RowData option with get, set
+        abstract filterPlaceholder: string option
+        abstract grouping: bool option
+        abstract headerStyle: PropsObject option
+        abstract hidden: bool option
+        abstract hideFilterIcon: bool option
+        abstract initialEditValue: 'RowData option
         abstract lookup: ResizeArray<'K * 'V> option with get, set
-        abstract readOnly: bool option with get, set
-        abstract removable: bool option with get, set
-        abstract render: ('RowData -> ColumnType -> ReactElement) option with get, set
-        abstract searchable: bool option with get, set
-        abstract sorting: bool option with get, set
-        abstract title: U2<string, ReactElement> option with get, set
-        abstract ``type``: ColumnFieldType option with get, set
-        abstract width: string option with get, set
+        abstract readOnly: bool option
+        abstract removable: bool option
+        abstract render: ('RowData -> ColumnType -> ReactElement) option
+        abstract searchable: bool option
+        abstract sorting: bool option
+        abstract title: U2<string, ReactElement> option
+        abstract ``type``: ColumnFieldType option
+        abstract width: string option
 
     [<AllowNullLiteral>] 
     type Filter<'RowData> =
-        abstract column: Column<'RowData> with get, set
-        abstract operator: string with get, set
-        abstract value: 'RowData option with get, set
+        abstract column: Column<'RowData>
+        abstract operator: string
+        abstract value: 'RowData option
 
     [<AllowNullLiteral>] 
     type Query<'RowData> =
-        abstract filters: ResizeArray<Filter<'RowData>> with get, set
-        abstract page: int with get, set
-        abstract pageSize: int with get, set
-        abstract search: string with get, set
-        abstract orderBy: Column<'RowData> with get, set
-        abstract orderDirection: OrderDirection with get, set
+        abstract filters: ResizeArray<Filter<'RowData>>
+        abstract page: int
+        abstract pageSize: int
+        abstract totalCount: int
+        abstract search: string
+        abstract orderBy: Column<'RowData>
+        abstract orderDirection: OrderDirection
     
     [<AllowNullLiteral>]
     type QueryResultNative<'RowData> =
-        abstract data: ResizeArray<'RowData> with get, set
-        abstract page: int with get, set
-        abstract totalCount: int with get, set
+        abstract data: ResizeArray<'RowData>
+        abstract page: int
+        abstract totalCount: int
 
     [<StringEnum; RequireQualifiedAccess>]
     type MuiIconColors =
@@ -115,49 +125,50 @@ module Bindings =
 
     [<AllowNullLiteral>]
     type IconProps =
-        abstract children: string with get, set
-        abstract classes: PropsObject option with get, set
-        abstract color: MuiIconColors with get, set
-        abstract ``component``: Fable.React.ReactElementType with get, set
-        abstract fontSize: MuiIconFontSize with get, set
+        abstract children: string
+        abstract classes: PropsObject option
+        abstract color: MuiIconColors
+        abstract ``component``: Fable.React.ReactElementType
+        abstract fontSize: MuiIconFontSize
 
     [<AllowNullLiteral>] 
      type Action<'RowData> =
-        abstract disabled: bool option with get, set
-        abstract icon: U2<string, (unit -> ReactElement)> with get, set
-        abstract isFreeAction: bool option with get, set
-        abstract position: string option with get, set
-        abstract tooltip: string option with get, set
-        abstract onClick: (Browser.Types.MouseEvent -> U2<'RowData, ResizeArray<'RowData>> -> unit) with get, set
-        abstract iconProps: IconProps option with get, set
-        abstract hidden: bool option with get, set
+        abstract disabled: bool option
+        abstract icon: U2<string, (unit -> ReactElement)>
+        abstract isFreeAction: bool option
+        abstract position: string option
+        abstract tooltip: string option
+        abstract onClick: (Browser.Types.MouseEvent -> U2<'RowData, ResizeArray<'RowData>> -> unit)
+        abstract iconProps: IconProps option
+        abstract hidden: bool option
 
     module Components =
         [<AllowNullLiteral>]
         type RefComponent =
-            abstract current: ReactElement option with get, set
+            abstract current: ReactElement option
 
         [<AllowNullLiteral>]
         type StyledComponent =
-            abstract classes: PropsObject option with get, set
-            abstract innerRef: RefComponent option with get, set
+            abstract classes: PropsObject option
+            abstract innerRef: RefComponent option
 
         [<AllowNullLiteral>]
         type ActionProps<'RowData> =
-            abstract action: U2<Action<'RowData>, U2<'RowData, ResizeArray<'RowData>> -> Action<'RowData>> with get, set
-            abstract data: U2<'RowData, ResizeArray<'RowData>> option with get, set
-            abstract disabled: bool option with get, set
-            abstract size: string option with get, set
+            abstract action: U2<Action<'RowData>, U2<'RowData, ResizeArray<'RowData>> -> Action<'RowData>>
+            abstract data: U2<'RowData, ResizeArray<'RowData>> option
+            abstract disabled: bool option
+            abstract size: string option
 
 type QueryResult<'RowData> =
     { data: 'RowData seq
       page: int
       totalCount: int }
+
     member this.Native =
-        jsOptions<Bindings.QueryResultNative<'RowData>> (fun qr ->
-            qr.data <- this.data |> ResizeArray
-            qr.page <- this.page
-            qr.totalCount <- this.totalCount)
+        {| data = this.data |> ResizeArray
+           page = this.page
+           totalCount = this.totalCount |}
+        |> unbox<Bindings.QueryResultNative<'RowData>>
 
 module QueryResult =
     let mapPromiseToNative (prom: JS.Promise<QueryResult<'RowData>>) =

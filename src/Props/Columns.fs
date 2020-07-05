@@ -48,6 +48,9 @@ type column =
     /// Editable custom component
     static member inline editComponent (value: ReactElement) = Interop.mkColumnAttr "editComponent" value
 
+    /// Placeholder for edit field
+    static member inline editPlaceholder (value: string) = Interop.mkColumnAttr "editPlaceholder" value
+
     /// When data is empty or undefined, string value, ReactElement or function result can be set as default value
     static member inline emptyValue (value: string) = Interop.mkColumnAttr "emptyValue" value
     /// When data is empty or undefined, string value, ReactElement or function result can be set as default value
@@ -125,6 +128,14 @@ type column =
     static member inline width (value: Styles.ICssUnit) = Interop.mkColumnAttr "width" value
 
 module column =
+    [<Erase>]
+    type align =
+        static member inline center = Interop.mkColumnAttr "align" "center"
+        static member inline inherit' = Interop.mkColumnAttr "align" "inherit"
+        static member inline justify = Interop.mkColumnAttr "align" "justify"
+        static member inline left = Interop.mkColumnAttr "align" "left"
+        static member inline right = Interop.mkColumnAttr "align" "right"
+
     [<Erase>]
     type currencySetting =
         static member inline currencyCode (value: string) = Interop.mkCurrencySettingAttr "currencyCode" value
