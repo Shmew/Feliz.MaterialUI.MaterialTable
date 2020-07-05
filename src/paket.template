@@ -1,5 +1,4 @@
 ﻿type project
-licenseExpression https://raw.githubusercontent.com/Shmew/Feliz.MaterialUI.MaterialTable/master/LICENSE
 authors Cody Johnson
 description
     Fable bindings written in the Feliz-style for material-table
