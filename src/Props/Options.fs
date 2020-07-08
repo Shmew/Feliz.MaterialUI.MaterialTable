@@ -126,9 +126,6 @@ type options =
 
     /// Page size options that could be selected by user
     static member inline pageSizeOptions (value: int list) = Interop.mkOptionsAttr "pageSizeOptions" (value |> ResizeArray)
-    /// Page size options that could be selected by user
-    static member inline pageSizeOptions (value: {| value: int; label: string |} list) = 
-        Interop.mkOptionsAttr "pageSizeOptions" (value |> List.map toPlainJsObj |> ResizeArray)
 
     /// Css style to be applied to table rows
     static member inline rowStyle (props: #IStyleAttribute list) = Interop.mkOptionsAttr "rowStyle" (createObj !!props)
@@ -260,3 +257,10 @@ module options =
     type toolbarButtonAlignment =
         static member inline left = Interop.mkOptionsAttr "toolbarButtonAlignment" "left"
         static member inline right = Interop.mkOptionsAttr "toolbarButtonAlignment" "right"
+
+[<AutoOpen;Erase>]
+module OptionMagic =
+    type options with
+        /// Page size options that could be selected by user
+        static member inline pageSizeOptions (value: {| value: int; label: string |} list) = 
+            Interop.mkOptionsAttr "pageSizeOptions" (value |> List.map toPlainJsObj |> ResizeArray)
