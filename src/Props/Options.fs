@@ -91,6 +91,11 @@ type options =
 
     /// Flag for groupbar visibility
     static member inline grouping (value: bool) = Interop.mkOptionsAttr "grouping" value
+    
+    /// Set group title
+    static member inline groupTitle<'T> (handler: 'T -> string) = Interop.mkOptionsAttr "groupTitle" handler
+    /// Set group title
+    static member inline groupTitle (value: string) = Interop.mkOptionsAttr "groupTitle" value
 
     /// Flag for header visibility
     static member inline header (value: bool) = Interop.mkOptionsAttr "header" value

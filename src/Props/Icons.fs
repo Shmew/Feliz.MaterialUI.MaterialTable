@@ -18,6 +18,7 @@ type icons =
     static member inline nextPage (value: ReactElement) = Interop.mkIconsAttr "NextPage" (fun () -> value)
     static member inline previousPage (value: ReactElement) = Interop.mkIconsAttr "PreviousPage" (fun () -> value)
     static member inline resetSearch (value: ReactElement) = Interop.mkIconsAttr "ResetSearch" (fun () -> value)
+    static member inline retry (value: ReactElement) = Interop.mkIconsAttr "Retry" (fun () -> value)
     static member inline search (value: ReactElement) = Interop.mkIconsAttr "Search" (fun () -> value)
     static member inline sortArrow (value: ReactElement) = Interop.mkIconsAttr "SortArrow" (fun () -> value)
     static member inline thirdStateCheck (value: ReactElement) = Interop.mkIconsAttr "ThirdStateCheck" (fun () -> value)

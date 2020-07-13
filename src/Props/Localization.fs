@@ -8,6 +8,7 @@ open Feliz
 type localization =
     /// Key value pair for localize body component
     static member inline body (props: ILocalizationBodyProperty list) = Interop.mkLocalizationAttr "body" (createObj !!props)
+    static member inline error (value: string) = Interop.mkLocalizationAttr "error" value
     /// Key value pair for localize grouping component
     static member inline grouping (props: ILocalizationGroupingProperty list) = Interop.mkLocalizationAttr "grouping" (createObj !!props)
     /// Key value pair for localize header component
@@ -27,6 +28,7 @@ module localization =
         static member inline deleteTooltip (value: string) = Interop.mkLocalizationBodyAttr "deleteTooltip" value
         static member inline editTooltip (value: string) = Interop.mkLocalizationBodyAttr "editTooltip" value
     
+    [<Erase>]
     module body =
         [<Erase>]
         type editRow =

@@ -50,6 +50,10 @@ type components =
     static member inline overlayLoading (handler: MaterialUI.PropsObject -> ReactElement) = Interop.mkComponentsAttr "OverlayLoading" handler
     static member inline overlayLoading (styledComp: Bindings.Components.StyledComponent) = Interop.mkComponentsAttr "OverlayLoading" styledComp
 
+    static member inline overlayError (comp: ReactElement) = Interop.mkComponentsAttr "OverlayError" comp
+    static member inline overlayError (handler: MaterialUI.PropsObject -> ReactElement) = Interop.mkComponentsAttr "OverlayError" handler
+    static member inline overlayError (styledComp: Bindings.Components.StyledComponent) = Interop.mkComponentsAttr "OverlayError" styledComp
+
     static member inline pagination (comp: ReactElement) = Interop.mkComponentsAttr "Pagination" comp
     static member inline pagination (handler: MaterialUI.PropsObject -> ReactElement) = Interop.mkComponentsAttr "Pagination" handler
     static member inline pagination (styledComp: Bindings.Components.StyledComponent) = Interop.mkComponentsAttr "Pagination" styledComp

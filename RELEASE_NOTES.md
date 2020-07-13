@@ -1,3 +1,6 @@
+### 1.5.0 - Monday, July 13th, 2020
+* Update for material-table 1.65.0 release
+
 ### 1.4.1 - Wednesday, July 8th, 2020
 * Fix overload resolution for pageSizeOptions
 

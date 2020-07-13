@@ -48,6 +48,18 @@ module Bindings =
         abstract minimumFractionDigits: int option
         abstract maximumFractionDigits: int option
 
+    [<AllowNullLiteral>] 
+    type Validation =
+        abstract isValid: bool
+        abstract helperText: string option
+
+    [<RequireQualifiedAccess>]
+    module Validation =
+        let fromResult (inp: Result<unit,string>) =
+            match inp with
+            | Ok _ -> {| isValid = true |} |> unbox<Validation>
+            | Error str -> {| isValid = false; helperText = str |} |> unbox<Validation>
+
     [<AllowNullLiteral>]
     type Column<'RowData> =
         abstract align: ColumnAlign option
@@ -71,6 +83,7 @@ module Bindings =
         abstract filterComponent: U2<ReactElement,Column<'RowData> -> (string -> 'Value -> unit)> option with get, set
         abstract filterPlaceholder: string option
         abstract grouping: bool option
+        abstract groupTitle: U3<string,ReactElement,'RowData -> string>
         abstract headerStyle: PropsObject option
         abstract hidden: bool option
         abstract hideFilterIcon: bool option
@@ -83,6 +96,7 @@ module Bindings =
         abstract sorting: bool option
         abstract title: U2<string, ReactElement> option
         abstract ``type``: ColumnFieldType option
+        abstract validate: ('RowData -> U3<Validation,string,bool>) option
         abstract width: string option
 
     [<AllowNullLiteral>] 
@@ -91,15 +105,28 @@ module Bindings =
         abstract operator: string
         abstract value: 'RowData option
 
+    [<StringEnum;RequireQualifiedAccess>]
+    type ErrorCause =
+        | Add
+        | Delete
+        | Query
+        | Update
+    
+    [<AllowNullLiteral>] 
+    type ErrorState =
+        abstract message: string
+        abstract errorCause: ErrorCause
+
     [<AllowNullLiteral>] 
     type Query<'RowData> =
+        abstract error: ErrorState option
         abstract filters: ResizeArray<Filter<'RowData>>
-        abstract page: int
-        abstract pageSize: int
-        abstract totalCount: int
-        abstract search: string
         abstract orderBy: Column<'RowData>
         abstract orderDirection: OrderDirection
+        abstract page: int
+        abstract pageSize: int
+        abstract search: string
+        abstract totalCount: int
     
     [<AllowNullLiteral>]
     type QueryResultNative<'RowData> =

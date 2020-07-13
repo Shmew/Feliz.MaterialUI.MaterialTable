@@ -88,6 +88,11 @@ type column =
     /// Flag to activate or disable grouping feature of column
     static member inline grouping (value: bool) = Interop.mkColumnAttr "grouping" value
 
+    /// Custom group title
+    static member inline groupTitle (handler: 'T -> string) = Interop.mkColumnAttr "groupTitle" handler
+    /// Custom group title
+    static member inline groupTitle (value: string) = Interop.mkColumnAttr "groupTitle" value
+
     /// Header cell style
     static member inline headerStyle (props: #IStyleAttribute list) = Interop.mkColumnAttr "headerStyle" (createObj !!props)
 
@@ -119,6 +124,13 @@ type column =
     static member inline title (value: string) = Interop.mkColumnAttr "title" value
     /// Header element
     static member inline title (value: ReactElement) = Interop.mkColumnAttr "title" value
+
+    /// Validates column data
+    static member inline validate<'T> (handler: 'T -> bool) = Interop.mkColumnAttr "validate" handler
+    /// Validates column data
+    static member inline validate<'T> (handler: 'T -> Result<unit,string>) = Interop.mkColumnAttr "validate" (handler >> Bindings.Validation.fromResult)
+    /// Validates column data
+    static member inline validate<'T> (handler: 'T -> string) = Interop.mkColumnAttr "validate" handler
 
     /// Width of the column in px
     static member inline width (value: int) = Interop.mkColumnAttr "width" value
