@@ -22,7 +22,7 @@
   </ItemGroup>
   <PropertyGroup>
     <NpmDependencies>
-      <NpmPackage Name="material-table" Version="gte 1.65 lt 2" ResolutionStrategy="max" />
+      <NpmPackage Name="material-table" Version="gte 1.66 lt 2" ResolutionStrategy="max" />
     </NpmDependencies>
   </PropertyGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />

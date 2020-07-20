@@ -106,6 +106,9 @@ type options =
     /// Flag for hiding filter icons
     static member inline hideFilterIcons (value: bool) = Interop.mkOptionsAttr "hideFilterIcons" value
 
+    /// Props to pass through to the table header component
+    static member inline headerSelectionProps (props: #IReactProperty list) = Interop.mkOptionsAttr "headerSelectionProps" (createObj !!props)
+    
     /// Max body height in px
     static member inline maxBodyHeight (value: int) = Interop.mkOptionsAttr "maxBodyHeight" value
     /// Max body height in px

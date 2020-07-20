@@ -1,3 +1,6 @@
+### 1.6.0 - Sunday, July 19th, 2020
+* Update for material-table 1.66.0 release
+
 ### 1.5.0 - Monday, July 13th, 2020
 * Update for material-table 1.65.0 release
 

@@ -87,12 +87,16 @@ type column =
 
     /// Flag to activate or disable grouping feature of column
     static member inline grouping (value: bool) = Interop.mkColumnAttr "grouping" value
-
+    
+    /// Custom group title
+    static member inline groupTitle (handler: 'T -> ReactElement) = Interop.mkColumnAttr "groupTitle" handler
     /// Custom group title
     static member inline groupTitle (handler: 'T -> string) = Interop.mkColumnAttr "groupTitle" handler
     /// Custom group title
+    static member inline groupTitle (value: ReactElement) = Interop.mkColumnAttr "groupTitle" value
+    /// Custom group title
     static member inline groupTitle (value: string) = Interop.mkColumnAttr "groupTitle" value
-
+    
     /// Header cell style
     static member inline headerStyle (props: #IStyleAttribute list) = Interop.mkColumnAttr "headerStyle" (createObj !!props)
 
