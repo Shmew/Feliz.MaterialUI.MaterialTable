@@ -32,7 +32,7 @@ type materialTable =
     ///
     /// Use this only if you get exceptions due to extensibility or read-only fields as it
     /// incurs a performance cost
-    static member inline dataImmutable (values: 'T list) = Interop.mkAttr "data" (Bindings.unfreezeList values)
+    static member inline dataImmutable (values: 'T list) = Interop.mkAttr "data" (Lodash.cloneDeep values |> ResizeArray)
 
     /// Delete tooltip handler
     static member inline deleteTooltip<'T> (handler: 'T -> string) = Interop.mkAttr "deleteTooltip" handler

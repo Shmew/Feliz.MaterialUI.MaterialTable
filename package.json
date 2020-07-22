@@ -1,6 +1,6 @@
 {
   "name": "feliz.-material-u-i.-material-table",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Fable bindings written in the Feliz-style for material-table",
   "homepage": "https://github.com/Shmew/Feliz.MaterialUI.MaterialTable",
   "bugs": {
@@ -42,9 +42,11 @@
     "css-loader": "^3",
     "fable-compiler": "^2",
     "fable-loader": "^2",
+    "fable-splitter": "^2.2.1",
     "file-loader": "^4",
     "gh-pages": "^2",
     "html-webpack-plugin": "^3",
+    "lodash": "^4.17.19",
     "mini-css-extract-plugin": "^0",
     "mkdirp": "^0",
     "node-sass": "^4",

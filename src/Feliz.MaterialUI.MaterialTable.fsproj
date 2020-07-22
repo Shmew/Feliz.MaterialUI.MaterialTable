@@ -23,6 +23,7 @@
   <PropertyGroup>
     <NpmDependencies>
       <NpmPackage Name="material-table" Version="gte 1.66 lt 2" ResolutionStrategy="max" />
+      <NpmPackage Name="lodash" Version="gte 4.17.19 lt 5" ResolutionStrategy="max" />
     </NpmDependencies>
   </PropertyGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />

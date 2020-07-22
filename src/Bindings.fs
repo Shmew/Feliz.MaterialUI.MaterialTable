@@ -1,18 +1,18 @@
 namespace Feliz.MaterialUI.MaterialTable
 
 open Fable.Core
+open System.ComponentModel
+
+[<EditorBrowsable(EditorBrowsableState.Never);RequireQualifiedAccess>]
+module Lodash =
+    open Fable.Core.JsInterop
+
+    let cloneDeep (x: 'T) : 'T = importDefault "lodash/cloneDeep"
 
 [<Erase>]
 module Bindings =
     open Feliz
     open Feliz.MaterialUI
-
-    [<Emit("$0.map(o => ({ ...o }))")>]
-    let unfreezeJSArray (xs: ResizeArray<'T>) : ResizeArray<'T> = jsNative
-
-    let inline unfreezeList (xs: 'T list) =
-        ResizeArray xs
-        |> unfreezeJSArray
 
     [<StringEnum;RequireQualifiedAccess>]
     type OrderDirection =

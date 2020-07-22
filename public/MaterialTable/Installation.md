@@ -11,11 +11,13 @@ Then you need to install the corresponding npm dependencies:
 ```bash
 npm install material-design-icons (if you want to import css via scss)
 npm install material-table
+npm install lodash
 
 ___
 
 yarn add material-design-icons (if you want to import css via scss)
 yarn add material-table
+yarn add lodash
 ```
 
 If you opt to not use scss in your project you can add the icons to your html:
