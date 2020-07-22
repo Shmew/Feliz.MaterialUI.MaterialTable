@@ -1,3 +1,6 @@
+### 1.7.1 - Wednesday, July 22nd, 2020
+* Switch to lodash for deep cloning for frozen object handling
+
 ### 1.7.0 - Wednesday, July 22nd, 2020
 * Add option to handle frozen object data
 
