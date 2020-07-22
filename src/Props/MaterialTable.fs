@@ -28,6 +28,12 @@ type materialTable =
     static member inline data<'T> (handler: Bindings.Query<'T> -> JS.Promise<QueryResult<'T>>) = 
         Interop.mkAttr "data" (fun query -> handler query |> QueryResult.mapPromiseToNative)
 
+    /// Data to be rendered
+    ///
+    /// Use this only if you get exceptions due to extensibility or read-only fields as it
+    /// incurs a performance cost
+    static member inline dataImmutable (values: 'T list) = Interop.mkAttr "data" (Bindings.unfreezeList values)
+
     /// Delete tooltip handler
     static member inline deleteTooltip<'T> (handler: 'T -> string) = Interop.mkAttr "deleteTooltip" handler
 

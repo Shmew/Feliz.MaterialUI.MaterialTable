@@ -2,9 +2,17 @@ namespace Feliz.MaterialUI.MaterialTable
 
 open Fable.Core
 
+[<Erase>]
 module Bindings =
     open Feliz
     open Feliz.MaterialUI
+
+    [<Emit("$0.map(o => ({ ...o }))")>]
+    let unfreezeJSArray (xs: ResizeArray<'T>) : ResizeArray<'T> = jsNative
+
+    let inline unfreezeList (xs: 'T list) =
+        ResizeArray xs
+        |> unfreezeJSArray
 
     [<StringEnum;RequireQualifiedAccess>]
     type OrderDirection =
@@ -55,7 +63,7 @@ module Bindings =
 
     [<RequireQualifiedAccess>]
     module Validation =
-        let fromResult (inp: Result<unit,string>) =
+        let inline fromResult (inp: Result<unit,string>) =
             match inp with
             | Ok _ -> {| isValid = true |} |> unbox<Validation>
             | Error str -> {| isValid = false; helperText = str |} |> unbox<Validation>
@@ -197,7 +205,8 @@ type QueryResult<'RowData> =
            totalCount = this.totalCount |}
         |> unbox<Bindings.QueryResultNative<'RowData>>
 
+[<Erase>]
 module QueryResult =
-    let mapPromiseToNative (prom: JS.Promise<QueryResult<'RowData>>) =
+    let inline mapPromiseToNative (prom: JS.Promise<QueryResult<'RowData>>) =
         prom
         |> Promise.map (fun p -> p.Native)

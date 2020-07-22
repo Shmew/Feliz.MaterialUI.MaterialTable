@@ -1,3 +1,6 @@
+### 1.7.0 - Wednesday, July 22nd, 2020
+* Add option to handle frozen object data
+
 ### 1.6.0 - Sunday, July 19th, 2020
 * Update for material-table 1.66.0 release
 
