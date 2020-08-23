@@ -8,6 +8,7 @@
     <Compile Include="Types.fs" />
     <Compile Include="Bindings.fs" />
     <Compile Include="Props\Actions.fs" />
+    <Compile Include="Props\CellEditable.fs" />
     <Compile Include="Props\Columns.fs" />
     <Compile Include="Props\Components.fs" />
     <Compile Include="Props\DetailPanel.fs" />
@@ -22,7 +23,7 @@
   </ItemGroup>
   <PropertyGroup>
     <NpmDependencies>
-      <NpmPackage Name="material-table" Version="gte 1.66 lt 2" ResolutionStrategy="max" />
+      <NpmPackage Name="material-table" Version="gte 1.69 lt 2" ResolutionStrategy="max" />
       <NpmPackage Name="lodash" Version="gte 4.17.19 lt 5" ResolutionStrategy="max" />
     </NpmDependencies>
   </PropertyGroup>

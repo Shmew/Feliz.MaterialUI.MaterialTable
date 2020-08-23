@@ -56,6 +56,12 @@ type options =
 
     /// Flag for export button that render export buttons
     static member inline exportButton (value: bool) = Interop.mkOptionsAttr "exportButton" value
+    
+    /// Enable export button, but only for the csv format
+    static member inline exportButtonCsv (value: bool) = Interop.mkOptionsAttr "exportButton" {| csv = value |}
+    
+    /// Enable export button, but only for the pdf format
+    static member inline exportButtonPdf (value: bool) = Interop.mkOptionsAttr "exportButton" {| pdf = value |}
 
     /// Delimiter to use in exported CSV file
     static member inline exportDelimiter (value: string) = Interop.mkOptionsAttr "exportDelimiter" value
@@ -109,6 +115,9 @@ type options =
     /// Props to pass through to the table header component
     static member inline headerSelectionProps (props: #IReactProperty list) = Interop.mkOptionsAttr "headerSelectionProps" (createObj !!props)
     
+    /// Initial Page Number
+    static member inline initialPage (value: int) = Interop.mkOptionsAttr "initialPage" value
+
     /// Max body height in px
     static member inline maxBodyHeight (value: int) = Interop.mkOptionsAttr "maxBodyHeight" value
     /// Max body height in px
@@ -122,9 +131,6 @@ type options =
     static member inline minBodyHeight (value: float) = Interop.mkOptionsAttr "minBodyHeight" value
     /// Min body height
     static member inline minBodyHeight (value: Feliz.Styles.ICssUnit) = Interop.mkOptionsAttr "minBodyHeight" value
-
-    /// Initial Page Number
-    static member inline initialPage (value: int) = Interop.mkOptionsAttr "initialPage" value
 
     /// Flag for paging feature
     static member inline paging (value: bool) = Interop.mkOptionsAttr "paging" value
@@ -235,6 +241,13 @@ module options =
     type padding =
         static member inline default' = Interop.mkOptionsAttr "padding" "default"
         static member inline dense = Interop.mkOptionsAttr "padding" "dense"
+
+    /// Pagination button position
+    [<Erase>]
+    type paginationPosition =
+        static member inline both = Interop.mkOptionsAttr "paginationPosition" "both"
+        static member inline bottom = Interop.mkOptionsAttr "paginationPosition" "bottom"
+        static member inline top = Interop.mkOptionsAttr "paginationPosition" "top"
 
     [<Erase>]
     type paginationType =

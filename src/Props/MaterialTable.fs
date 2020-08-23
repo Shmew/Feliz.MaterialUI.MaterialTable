@@ -8,17 +8,14 @@ open System
 [<Erase>]
 type materialTable =
     /// Action list. An icon button will be rendered for each actions
-    static member inline actions (prop: IActionsProperty) = Interop.mkAttr "actions" (prop|> Array.singleton |> ResizeArray)
-    /// Action list. An icon button will be rendered for each actions
     static member inline actions (props: IActionsProperty list) = Interop.mkAttr "actions" (props |> ResizeArray)
 
-    /// Column definitions
-    static member inline columns (prop: IColumnsProperty) = Interop.mkAttr "columns" (prop |> Array.singleton |> ResizeArray)
+    /// Editable cell properties
+    static member inline cellEditable (props: ICellEditableProperty list) = Interop.mkAttr "cellEditable" (createObj !!props)
+
     /// Column definitions
     static member inline columns (props: IColumnsProperty list) = Interop.mkAttr "columns" (props |> ResizeArray)
 
-    /// Component customization
-    static member inline components (prop: IComponentsProperty) = Interop.mkAttr "components" (createObj !![ prop ])
     /// Component customization
     static member inline components (props: IComponentsProperty list) = Interop.mkAttr "components" (createObj !!props)
 
@@ -34,11 +31,6 @@ type materialTable =
     /// incurs a performance cost
     static member inline dataImmutable (values: 'T list) = Interop.mkAttr "data" (Lodash.cloneDeep values |> ResizeArray)
 
-    /// Delete tooltip handler
-    static member inline deleteTooltip<'T> (handler: 'T -> string) = Interop.mkAttr "deleteTooltip" handler
-
-    /// Component(s) to be rendered on detail panel
-    static member inline detailPanels (prop: IDetailPanelsProperty) = Interop.mkAttr "detailPanel" (prop |> Array.singleton |> ResizeArray)
     /// Component(s) to be rendered on detail panel
     static member inline detailPanels (props: IDetailPanelsProperty list) = Interop.mkAttr "detailPanel" (props |> ResizeArray)
     /// Component(s) to be rendered on detail panel
@@ -47,19 +39,15 @@ type materialTable =
     /// Object for add, update and delete functions
     static member inline editable (props: IEditableProperty list) = Interop.mkAttr "editable" (createObj !!props)
 
-    /// Edit tooltip handler
-    static member inline editTooltip<'T> (handler: 'T -> string) = Interop.mkAttr "editTooltip" handler
-
-    /// Icons customization
-    static member inline icons (prop: IIconsProperty) = Interop.mkAttr "icons" (createObj !![ prop ])
     /// Icons customization
     static member inline icons (props: IIconsProperty list) = Interop.mkAttr "icons" (createObj !!props)
+
+    /// Sets the default row fields when adding rows
+    static member inline initialFormData<'T> (defaultRow: 'T) = Interop.mkAttr "initialFormData" defaultRow
 
     /// Flag for loading animation
     static member inline isLoading (value: bool) = Interop.mkAttr "isLoading" value
 
-    /// All text for localization
-    static member inline localization (prop: ILocalizationProperty) = Interop.mkAttr "localization" (createObj !![ prop ])
     /// All text for localization
     static member inline localization (props: ILocalizationProperty list) = Interop.mkAttr "localization" (createObj !!props)
 
@@ -93,8 +81,6 @@ type materialTable =
     /// To handle search changes
     static member inline onSearchChange (handler: string -> unit) = Interop.mkAttr "onSearchChange" handler
 
-    /// All options of table
-    static member inline options (prop: IOptionsProperty) = Interop.mkAttr "options" (createObj !![ prop ])
     /// All options of table
     static member inline options (props: IOptionsProperty list) = Interop.mkAttr "options" (createObj !!props)
 

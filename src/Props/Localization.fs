@@ -21,19 +21,19 @@ type localization =
 module localization =
     [<Erase>]
     type body =
-        static member inline editRow (props: ILocalizationEditRowProperty list) = Interop.mkLocalizationBodyAttr "emptyDataSourceMessage" (createObj !!props)
-        static member inline emptyDataSourceMessage (value: string) = Interop.mkLocalizationBodyAttr "emptyDataSourceMessage" value
-        static member inline filterRow (props: ILocalizationFilterRowProperty list) = Interop.mkLocalizationBodyAttr "emptyDataSourceMessage" (createObj !!props)
         static member inline addTooltip (value: string) = Interop.mkLocalizationBodyAttr "addTooltip" value
         static member inline deleteTooltip (value: string) = Interop.mkLocalizationBodyAttr "deleteTooltip" value
+        static member inline editRow (props: ILocalizationEditRowProperty list) = Interop.mkLocalizationBodyAttr "emptyDataSourceMessage" (createObj !!props)
         static member inline editTooltip (value: string) = Interop.mkLocalizationBodyAttr "editTooltip" value
+        static member inline emptyDataSourceMessage (value: string) = Interop.mkLocalizationBodyAttr "emptyDataSourceMessage" value
+        static member inline filterRow (props: ILocalizationFilterRowProperty list) = Interop.mkLocalizationBodyAttr "emptyDataSourceMessage" (createObj !!props)
     
     [<Erase>]
     module body =
         [<Erase>]
         type editRow =
-            static member inline deleteText (value: string) = Interop.mkLocalizationEditRowAttr "deleteText" value
             static member inline cancelTooltip (value: string) = Interop.mkLocalizationEditRowAttr "cancelTooltip" value
+            static member inline deleteText (value: string) = Interop.mkLocalizationEditRowAttr "deleteText" value
             static member inline saveTooltip (value: string) = Interop.mkLocalizationEditRowAttr "saveTooltip" value
 
         [<Erase>]
@@ -51,27 +51,30 @@ module localization =
     
     [<Erase>]
     type pagination =
+        static member inline firstAriaLabel (value: string) = Interop.mkLocalizationPaginationAttr "firstAriaLabel" value
+        static member inline firstTooltip (value: string) = Interop.mkLocalizationPaginationAttr "firstTooltip" value
         static member inline labelDisplayedRows (value: string) = Interop.mkLocalizationPaginationAttr "labelDisplayedRows" value
         static member inline labelRowsSelect (value: string) = Interop.mkLocalizationPaginationAttr "labelRowsSelect" value
         static member inline labelRowsPerPage (value: string) = Interop.mkLocalizationPaginationAttr "labelRowsPerPage" value
-        static member inline firstAriaLabel (value: string) = Interop.mkLocalizationPaginationAttr "firstAriaLabel" value
-        static member inline firstTooltip (value: string) = Interop.mkLocalizationPaginationAttr "firstTooltip" value
-        static member inline previousAriaLabel (value: string) = Interop.mkLocalizationPaginationAttr "previousAriaLabel" value
-        static member inline previousTooltip (value: string) = Interop.mkLocalizationPaginationAttr "previousTooltip" value
-        static member inline nextAriaLabel (value: string) = Interop.mkLocalizationPaginationAttr "nextAriaLabel" value
-        static member inline nextTooltip (value: string) = Interop.mkLocalizationPaginationAttr "nextTooltip" value
         static member inline lastAriaLabel (value: string) = Interop.mkLocalizationPaginationAttr "lastAriaLabel" value
         static member inline lastTooltip (value: string) = Interop.mkLocalizationPaginationAttr "lastTooltip" value
+        static member inline nextAriaLabel (value: string) = Interop.mkLocalizationPaginationAttr "nextAriaLabel" value
+        static member inline nextTooltip (value: string) = Interop.mkLocalizationPaginationAttr "nextTooltip" value
+        static member inline previousAriaLabel (value: string) = Interop.mkLocalizationPaginationAttr "previousAriaLabel" value
+        static member inline previousTooltip (value: string) = Interop.mkLocalizationPaginationAttr "previousTooltip" value
     
     [<Erase>]
     type toolbar =
         static member inline addRemoveColumns (value: string) = Interop.mkLocalizationToolbarAttr "addRemoveColumns" value
-        static member inline nRowsSelected (value: string) = Interop.mkLocalizationToolbarAttr "nRowsSelected" value
-        static member inline nRowsSelected (rowsSelectedHandler: int -> string) = Interop.mkLocalizationToolbarAttr "nRowsSelected" rowsSelectedHandler
-        static member inline showColumnsTitle (value: string) = Interop.mkLocalizationToolbarAttr "showColumnsTitle" value
-        static member inline showColumnsAriaLabel (value: string) = Interop.mkLocalizationToolbarAttr "showColumnsAriaLabel" value
+        static member inline clearSearchAriaLabel (value: string) = Interop.mkLocalizationToolbarAttr "clearSearchAriaLabel" value
         static member inline exportTitle (value: string) = Interop.mkLocalizationToolbarAttr "exportTitle" value
         static member inline exportAriaLabel (value: string) = Interop.mkLocalizationToolbarAttr "exportAriaLabel" value
-        static member inline exportName (value: string) = Interop.mkLocalizationToolbarAttr "exportName" value
-        static member inline searchTooltip (value: string) = Interop.mkLocalizationToolbarAttr "searchTooltip" value
+        static member inline exportCSVName (value: string) = Interop.mkLocalizationToolbarAttr "exportCSVName" value
+        static member inline exportPDFName (value: string) = Interop.mkLocalizationToolbarAttr "exportPDFName" value
+        static member inline nRowsSelected (value: string) = Interop.mkLocalizationToolbarAttr "nRowsSelected" value
+        static member inline nRowsSelected (rowsSelectedHandler: int -> string) = Interop.mkLocalizationToolbarAttr "nRowsSelected" rowsSelectedHandler
+        static member inline showColumnsAriaLabel (value: string) = Interop.mkLocalizationToolbarAttr "showColumnsAriaLabel" value
+        static member inline showColumnsTitle (value: string) = Interop.mkLocalizationToolbarAttr "showColumnsTitle" value
+        static member inline searchAriaLabel (value: string) = Interop.mkLocalizationToolbarAttr "searchAriaLabel" value
         static member inline searchPlaceholder (value: string) = Interop.mkLocalizationToolbarAttr "searchPlaceholder" value
+        static member inline searchTooltip (value: string) = Interop.mkLocalizationToolbarAttr "searchTooltip" value

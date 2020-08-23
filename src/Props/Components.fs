@@ -26,6 +26,10 @@ type components =
     static member inline container (handler: MaterialUI.PropsObject -> ReactElement) = Interop.mkComponentsAttr "Container" handler
     static member inline container (styledComp: Bindings.Components.StyledComponent) = Interop.mkComponentsAttr "Container" styledComp
 
+    static member inline editCell (comp: ReactElement) = Interop.mkComponentsAttr "EditCell" comp
+    static member inline editCell (handler: MaterialUI.PropsObject -> ReactElement) = Interop.mkComponentsAttr "EditCell" handler
+    static member inline editCell (styledComp: Bindings.Components.StyledComponent) = Interop.mkComponentsAttr "EditCell" styledComp
+
     static member inline editField (comp: ReactElement) = Interop.mkComponentsAttr "EditField" comp
     static member inline editField (handler: MaterialUI.PropsObject -> ReactElement) = Interop.mkComponentsAttr "EditField" handler
     static member inline editField (styledComp: Bindings.Components.StyledComponent) = Interop.mkComponentsAttr "EditField" styledComp

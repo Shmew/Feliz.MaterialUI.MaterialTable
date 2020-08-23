@@ -1,3 +1,7 @@
+### 1.8.0 - Sunday, August 23rd, 2020
+* Update for material-table 1.69.0 release
+* Remove some redundant overloads
+
 ### 1.7.1 - Wednesday, July 22nd, 2020
 * Switch to lodash for deep cloning for frozen object handling
 
