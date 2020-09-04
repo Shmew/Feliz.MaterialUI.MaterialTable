@@ -1,3 +1,6 @@
+### 1.8.1 - Thursday, September 2nd, 2020
+* Update dependencies
+
 ### 1.8.0 - Sunday, August 23rd, 2020
 * Update for material-table 1.69.0 release
 * Remove some redundant overloads
