@@ -1,4 +1,4 @@
-version 5.247.4
+version 5.251.0
 
 framework: auto-detect
 
@@ -10,7 +10,7 @@ group MaterialTable
     nuget Fable.Promise ~> 2
     nuget Feliz ~> 1
     nuget Feliz.MaterialUI ~> 1
-    nuget FSharp.Core ~> 4.7
+    nuget FSharp.Core >= 4.7.2 lowest_matching: true
 
 group Docs
     source https://nuget.org/api/v2
@@ -29,14 +29,14 @@ group Docs
     nuget Feliz.Markdown ~> 1
     nuget Feliz.MaterialUI ~> 1
     nuget Feliz.Router ~> 1
-    nuget FSharp.Core ~> 4.7
+    nuget FSharp.Core >= 4.7.2 lowest_matching: true
 
 group Tooling
 	source https://nuget.org/api/v2
 	source https://api.nuget.org/v3/index.json
 
 	nuget Fake.IO.FileSystem ~> 5
-	nuget FSharp.Core ~> 4.7
+    nuget FSharp.Core >= 4.7.2 lowest_matching: true
     nuget FSharp.Json ~> 0
 	nuget FSharpLint.Core ~> 0
     nuget Yarnpkg.Yarn ~> 1
@@ -55,6 +55,7 @@ group FakeBuild
     nuget Fake.JavaScript.Yarn ~> 5
 	nuget Fake.JavaScript.Npm ~> 5
 	nuget Fake.Tools.Git ~> 5
+    nuget FSharp.Core ~> 4.7
     nuget FSharp.Json ~> 0
 	nuget FSharpLint.Core ~> 0
 	nuget Fantomas ~> 3

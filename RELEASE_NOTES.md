@@ -1,3 +1,6 @@
+### 1.8.2 - Wednesday, November 18th, 2020
+* Support FSharp.Core 5.0
+
 ### 1.8.1 - Thursday, September 2nd, 2020
 * Update dependencies
 
