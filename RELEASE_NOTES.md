@@ -1,3 +1,6 @@
+### 1.8.3 - Friday, December 11th, 2020
+* Fix JS interop for onSelectionChange
+
 ### 1.8.2 - Wednesday, November 18th, 2020
 * Support FSharp.Core 5.0
 
