@@ -73,7 +73,7 @@ type materialTable =
     static member inline onRowClick<'T> (handler: Browser.Types.MouseEvent -> 'T -> (unit -> unit) -> unit) = Interop.mkAttr "onRowClick" (Func<_,_,_,_> handler)
 
     /// To handle selection changes
-    static member inline onSelectionChange<'T> (handler: 'T list -> 'T -> unit) = Interop.mkAttr "onSelectionChange"  (Func<_,_,_> handler)
+    static member inline onSelectionChange<'T> (handler: 'T list -> 'T -> unit) = Interop.mkAttr "onSelectionChange"  (Func<_,_,_> (fun xs x -> handler (List.ofSeq xs) x))
 
     /// To handle tree data rows expand changes
     static member inline onTreeExpandChange (handler: obj option -> bool -> unit) = Interop.mkAttr "onTreeExpandChange" (Func<_,_,_> handler)
