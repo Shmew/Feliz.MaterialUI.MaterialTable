@@ -1,3 +1,6 @@
+### 1.8.4 - Wednesday, February 10th, 2021
+* Fix toolbar localization issue
+
 ### 1.8.3 - Friday, December 11th, 2020
 * Fix JS interop for onSelectionChange
 
