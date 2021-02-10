@@ -16,7 +16,7 @@ type localization =
     /// Key value pair for localize pagination component
     static member inline pagination (props: ILocalizationPaginationProperty list) = Interop.mkLocalizationAttr "pagination" (createObj !!props)
     /// Key value pair for localize toolbar component
-    static member inline toolbar (props: ILocalizationToolbarProperty list) = Interop.mkLocalizationAttr "pagination" (createObj !!props)
+    static member inline toolbar (props: ILocalizationToolbarProperty list) = Interop.mkLocalizationAttr "toolbar" (createObj !!props)
 
 module localization =
     [<Erase>]

@@ -57,6 +57,7 @@ let render = React.functionComponent (fun () ->
             ]
             localization.toolbar [
                 localization.toolbar.searchTooltip "Lêgerîn"
+                localization.toolbar.searchPlaceholder "Gerr"
             ]
             localization.pagination [
                 localization.pagination.labelRowsSelect "Xet"
