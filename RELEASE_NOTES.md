@@ -1,4 +1,4 @@
-### 1.1.0 - Monday, April 26th, 2021
+### 1.9.0 - Monday, April 26th, 2021
 * Un-nested localization api
 
 ### 1.8.4 - Wednesday, February 10th, 2021
