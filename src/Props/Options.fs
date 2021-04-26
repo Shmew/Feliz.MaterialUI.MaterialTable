@@ -201,6 +201,7 @@ type options =
     /// Flag for toolbar
     static member inline toolbar (value: bool) = Interop.mkOptionsAttr "toolbar" value
 
+[<Erase>]
 module options =
     /// Position of add row
     [<Erase>]
