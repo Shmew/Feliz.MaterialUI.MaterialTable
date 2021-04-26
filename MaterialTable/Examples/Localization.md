@@ -58,18 +58,19 @@ let render = React.functionComponent (fun () ->
         ]
         materialTable.localization [
             localization.body [
-                localization.body.emptyDataSourceMessage "Guherandinên ku tiştek tune"
+                body.emptyDataSourceMessage "Guherandinên ku tiştek tune"
             ]
             localization.toolbar [
-                localization.toolbar.searchTooltip "Lêgerîn"
+                toolbar.searchTooltip "Lêgerîn"
+                toolbar.searchPlaceholder "Gerr"
             ]
             localization.pagination [
-                localization.pagination.labelRowsSelect "Xet"
-                localization.pagination.labelDisplayedRows " {from}-{to} xete {count}"
-                localization.pagination.firstTooltip "Rûpele Berîn"
-                localization.pagination.previousTooltip "Rûpele Berê"
-                localization.pagination.nextTooltip "Rûpele Piştî"
-                localization.pagination.lastTooltip "Rûpele Talî"
+                pagination.labelRowsSelect "Xet"
+                pagination.labelDisplayedRows " {from}-{to} xete {count}"
+                pagination.firstTooltip "Rûpele Berîn"
+                pagination.previousTooltip "Rûpele Berê"
+                pagination.nextTooltip "Rûpele Piştî"
+                pagination.lastTooltip "Rûpele Talî"
             ]
         ]
     ])
