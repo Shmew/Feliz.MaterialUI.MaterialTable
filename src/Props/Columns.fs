@@ -1,9 +1,15 @@
-﻿namespace Feliz.MaterialUI.MaterialTable
+namespace Feliz.MaterialUI.MaterialTable
 
 open Fable.Core
 open Fable.Core.JsInterop
 open Feliz
 open System
+
+type ObjectValidationResult =
+    {
+        isValid : bool
+        helperText : string
+    }
 
 [<Erase>]
 type column =
@@ -135,6 +141,8 @@ type column =
     static member inline validate<'T> (handler: 'T -> Result<unit,string>) = Interop.mkColumnAttr "validate" (handler >> Bindings.Validation.fromResult)
     /// Validates column data
     static member inline validate<'T> (handler: 'T -> string) = Interop.mkColumnAttr "validate" handler
+    /// Validates column data
+    static member inline validate<'T> (handler: 'T -> ObjectValidationResult) = Interop.mkColumnAttr "validate" handler
 
     /// Width of the column in px
     static member inline width (value: int) = Interop.mkColumnAttr "width" value
