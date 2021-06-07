@@ -132,9 +132,13 @@ type column =
     /// Validates column data
     static member inline validate<'T> (handler: 'T -> bool) = Interop.mkColumnAttr "validate" handler
     /// Validates column data
-    static member inline validate<'T> (handler: 'T -> Result<unit,string>) = Interop.mkColumnAttr "validate" (handler >> Bindings.Validation.fromResult)
+    static member inline validate<'T> (handler: 'T -> Result<unit,string>) = 
+        Interop.mkColumnAttr "validate" (handler >> Bindings.Validation.fromResult)
     /// Validates column data
     static member inline validate<'T> (handler: 'T -> string) = Interop.mkColumnAttr "validate" handler
+    /// Validates column data
+    static member inline validate<'T> (handler: 'T -> {| isValid: bool; helperText: string option |}) = 
+        Interop.mkColumnAttr "validate" (handler >> unbox<Bindings.Validation>)
 
     /// Width of the column in px
     static member inline width (value: int) = Interop.mkColumnAttr "width" value

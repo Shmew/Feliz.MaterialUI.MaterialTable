@@ -1,3 +1,6 @@
+### 1.10.0 - Monday, June 7th, 2021
+* Fixed cell validation handling for cases where a value is valid, but helper text is still desired
+
 ### 1.9.0 - Monday, April 26th, 2021
 * Un-nested localization api
 
