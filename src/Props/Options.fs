@@ -192,9 +192,6 @@ type options =
     /// Flag to activate or disable sorting feature of table
     static member inline sorting (value: bool) = Interop.mkOptionsAttr "sorting" value
 
-    /// Could be used to pass ref over withStyles
-    static member inline tableRef (ref': Fable.React.IRefValue<'T>) = Interop.mkOptionsAttr "tableRef" ref'
-
     /// Flag for third sort click
     static member inline thirdSortClick (value: bool) = Interop.mkOptionsAttr "thirdSortClick" value
 

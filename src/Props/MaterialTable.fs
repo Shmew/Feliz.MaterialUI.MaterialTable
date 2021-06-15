@@ -94,6 +94,9 @@ type materialTable =
     /// Style would be applied to Container of table
     static member inline style (styles: #IStyleAttribute list) = Interop.mkAttr "style" (createObj !!styles)
 
+    /// Could be used to pass ref over withStyles
+    static member inline tableRef<'T> (ref': Fable.React.IRefValue<TableRef<'T> option>) = Interop.mkAttr "tableRef" ref'
+
     /// Table Title (only render if toolbar option is true)
     static member inline title (value: ReactElement) = Interop.mkAttr "title" value
     /// Table Title (only render if toolbar option is true)
