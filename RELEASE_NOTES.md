@@ -1,3 +1,6 @@
+### 1.11.0 - Tuesday, June 15th, 2021
+* Fixed tableRef binding, and added types for the tableRef
+
 ### 1.10.0 - Monday, June 7th, 2021
 * Fixed cell validation handling for cases where a value is valid, but helper text is still desired
 
